@@ -1,0 +1,165 @@
+package com.food.delivery.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.ResponseEntity.BodyBuilder;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.food.delivery.facade.OrdersFacade;
+import com.food.delivery.facade.RestaurantProfileFacade;
+import com.food.delivery.pojo.MessageResponse;
+import com.food.delivery.pojo.OrdersResource;
+
+import jakarta.servlet.http.HttpServletRequest;
+import com.food.delivery.model.Status;
+
+@RestController
+public class OrderController {
+
+	private static final Logger logger = LoggerFactory.getLogger(CustomerProfileController.class);
+
+	@Autowired
+	private OrdersFacade ordersFacade;
+
+	@Autowired
+	private RestaurantProfileFacade restaurantProfileFacade;
+
+	// POST
+	@CrossOrigin(origins = "*", exposedHeaders = "**")
+	@PreAuthorize("hasAnyRole('ROLE_CUSTOMER')")
+	@PostMapping(value = "/orders", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<?> addOrder(@RequestBody OrdersResource ordersResource) {
+
+		logger.info("Add order details");
+
+		if (ordersResource == null) {
+			return ResponseEntity.badRequest().body(new MessageResponse("Empty orders resource!"));
+		}
+
+		if (ordersResource.getUsername().isEmpty()) {
+			return ResponseEntity.badRequest()
+					.body(new MessageResponse("Bad Request: Please provide customer's username!"));
+		}
+
+		if (ordersResource.getRestaurantName().isEmpty()) {
+			return ResponseEntity.badRequest()
+					.body(new MessageResponse("Bad Request: Please provide restaurant name!"));
+		}
+
+		if (ordersResource.getFood_price() == 0) {
+			return ResponseEntity.badRequest()
+					.body(new MessageResponse("Bad Request: Please provide valid food price!"));
+		}
+
+		ordersFacade.addOrders(ordersResource);
+
+		return ResponseEntity.ok(new MessageResponse("Orders added successfully!"));
+	}
+
+	// Get Orders list for a particular restaurant
+	@CrossOrigin(origins = "*", exposedHeaders = "**")
+	@PreAuthorize("hasRole('ROLE_RESTAURANT_OWNER')")
+	@GetMapping(value = "/restaurants/orders", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<?> getOrders(@RequestParam(value = "restaurant_name", required = true) String restaurant_name,
+			HttpServletRequest request) {
+
+		logger.info("Get orders from restuarant name");
+
+		if (restaurant_name.isEmpty()) {
+			return ResponseEntity.badRequest()
+					.body(new MessageResponse("Please provide restaurant_name to view the orders list."));
+		}
+		List<OrdersResource> ordersList = new ArrayList<OrdersResource>();
+		try {
+			// Call facade method to save user profile
+			ordersList = ordersFacade.getOrdersByRestaurantOwner(restaurant_name);
+
+		} catch (Exception e) {
+			return ResponseEntity.badRequest()
+					.body(new MessageResponse("Error: order list could not be retrieved " + restaurant_name + "!"));
+		}
+
+		if (ordersList.isEmpty()) {
+			return ((BodyBuilder) ResponseEntity.notFound())
+					.body(new MessageResponse("No orders found for " + restaurant_name + "!"));
+		}
+
+		return ResponseEntity.ok(ordersList);
+	}
+
+	// Get Orders list for a customer (tracking order)
+	@CrossOrigin(origins = "*", exposedHeaders = "**")
+	@PreAuthorize("hasRole('ROLE_CUSTOMER')")
+	@GetMapping(value = "/customers/orders", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<?> getOrderStatusByCustomer(@RequestParam(value = "username", required = true) String username,
+			@RequestParam(value = "status", required = false) String status,
+			HttpServletRequest request) {
+
+		logger.info("Tracking order status for the customer");
+
+		if (username.isEmpty()) {
+			return ResponseEntity.badRequest()
+					.body(new MessageResponse("Please provide username to view the order status."));
+		}
+		List<OrdersResource> ordersList = new ArrayList<OrdersResource>();
+		try {
+			// Call facade method to save user profile
+			ordersList = ordersFacade.getOrderStatusByCustomer(username, status);
+
+		} catch (Exception e) {
+			return ResponseEntity.badRequest()
+					.body(new MessageResponse("Error: order status could not be retrieved " + username + "!"));
+		}
+
+		if (ordersList.isEmpty()) {
+			return ((BodyBuilder) ResponseEntity.notFound())
+					.body(new MessageResponse("No orders found for " + username + "!"));
+		}
+
+		return ResponseEntity.ok(ordersList);
+	}
+
+	// PUT - Update user profile
+	@CrossOrigin(origins = "*", exposedHeaders = "**")
+	@PreAuthorize("hasRole('ROLE_RESTAURANT_OWNER')")
+	@PutMapping("/orders")
+	public ResponseEntity<?> updateOrderStatus(@RequestBody OrdersResource orders) {
+
+		logger.debug("Updating order status");
+
+		if (orders == null) {
+			return ResponseEntity.badRequest().body(new MessageResponse("Please provide order details."));
+		}
+
+		if (orders.getStatus().isEmpty() || orders.getUsername().isEmpty() || orders.getRestaurantName().isEmpty()
+				|| orders.getFoodName().isEmpty()) {
+			return ResponseEntity.badRequest()
+					.body(new MessageResponse("Please provide all order details to update the status."));
+		}
+
+		if (Status.valueOf(orders.getStatus()) == null) {
+			return ResponseEntity.badRequest().body(new MessageResponse("Please provide a valid status."));
+		}
+
+		boolean response = ordersFacade.updateOrders(orders);
+		if (!response) {
+			return ResponseEntity.badRequest().body(new MessageResponse("Error: User profile could not be updated!"));
+		}
+
+		return ResponseEntity.ok(new MessageResponse("User Profile Updated successfully!"));
+	}
+
+}

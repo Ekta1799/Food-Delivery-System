@@ -1,0 +1,36 @@
+package com.food.delivery.facade;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.food.delivery.model.Orders;
+import com.food.delivery.model.User;
+import com.food.delivery.pojo.OrdersResource;
+import com.food.delivery.repository.RestaurantProfileRepository;
+import com.food.delivery.repository.UserRepository;
+
+public class OrdersFacade {
+	
+	@Autowired
+	UserRepository userRepository;
+	
+	@Autowired
+	RestaurantProfileRepository restaurantProfileRepo;
+
+	public void addOrders(OrdersResource orders) {
+		
+		Optional<User> userData = userRepository.findByUsername(orders.getUsername());
+		User userVal = userData.get();
+		
+		Long customer_id = userVal.getId();
+		
+		Long restuarant_id = restaurantProfileRepo.getRestaurantIdByRestaurantName(orders.getRestaurantName());
+
+		Orders orderModel = Orders();
+		
+		
+		
+	}
+
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="RestaurantProfileFacadeTest" project="food" tests="6" started="6" failures="0" errors="1" ignored="0">
+  <testsuite name="com.food.delivery.facade.RestaurantProfileFacadeTest" time="2.889" displayname="RestaurantProfileFacadeTest" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.facade.RestaurantProfileFacadeTest]">
+    <testcase name="testUpdateRestaurantProfile" classname="com.food.delivery.facade.RestaurantProfileFacadeTest" time="2.796" displayname="testUpdateRestaurantProfile()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.facade.RestaurantProfileFacadeTest]/[method:testUpdateRestaurantProfile()]"/>
+    <testcase name="testAddMenu" classname="com.food.delivery.facade.RestaurantProfileFacadeTest" time="0.017" displayname="testAddMenu()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.facade.RestaurantProfileFacadeTest]/[method:testAddMenu()]"/>
+    <testcase name="testAddRestaurantProfile" classname="com.food.delivery.facade.RestaurantProfileFacadeTest" time="0.018" displayname="testAddRestaurantProfile()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.facade.RestaurantProfileFacadeTest]/[method:testAddRestaurantProfile()]"/>
+    <testcase name="testGetRestaurantList" classname="com.food.delivery.facade.RestaurantProfileFacadeTest" time="0.017" displayname="testGetRestaurantList()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.facade.RestaurantProfileFacadeTest]/[method:testGetRestaurantList()]"/>
+    <testcase name="testGetRestaurantProfile" classname="com.food.delivery.facade.RestaurantProfileFacadeTest" time="0.01" displayname="testGetRestaurantProfile()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.facade.RestaurantProfileFacadeTest]/[method:testGetRestaurantProfile()]"/>
+    <testcase name="testGetRestaurantProfile_NotFound" classname="com.food.delivery.facade.RestaurantProfileFacadeTest" time="0.025" displayname="testGetRestaurantProfile_NotFound()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.facade.RestaurantProfileFacadeTest]/[method:testGetRestaurantProfile_NotFound()]">
+      <error>java.lang.NullPointerException: Cannot invoke "com.food.delivery.model.RestaurantOwnerProfile.getFirstname()" because "restaurant" is null&#13;
+	at com.food.delivery.facade.RestaurantProfileFacade.convertDTOtoResource(RestaurantProfileFacade.java:73)&#13;
+	at com.food.delivery.facade.RestaurantProfileFacade.getRestaurantProfile(RestaurantProfileFacade.java:64)&#13;
+	at com.food.delivery.facade.RestaurantProfileFacadeTest.testGetRestaurantProfile_NotFound(RestaurantProfileFacadeTest.java:200)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+  </testsuite>
+</testrun>

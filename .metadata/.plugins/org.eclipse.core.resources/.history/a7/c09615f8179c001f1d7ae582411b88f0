@@ -1,0 +1,10 @@
+package com.food.delivery.services;
+
+import com.food.delivery.model.CustomerProfile;
+
+public interface RestaurantProfileService {
+	
+	public void addRestaurantProfile(RestaurantProfile restaurant);
+
+	public RestaurantProfile getRestaurantProfile(String firstname);
+}

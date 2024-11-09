@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="MenuServiceImplTest" project="food" tests="3" started="3" failures="0" errors="1" ignored="0">
+  <testsuite name="com.food.delivery.services.MenuServiceImplTest" time="3.157" displayname="MenuServiceImplTest" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.services.MenuServiceImplTest]">
+    <testcase name="testGetMenuByRestaurantId_withoutFilters" classname="com.food.delivery.services.MenuServiceImplTest" time="3.063" displayname="testGetMenuByRestaurantId_withoutFilters()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.services.MenuServiceImplTest]/[method:testGetMenuByRestaurantId_withoutFilters()]"/>
+    <testcase name="testAddMenu" classname="com.food.delivery.services.MenuServiceImplTest" time="0.069" displayname="testAddMenu()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.services.MenuServiceImplTest]/[method:testAddMenu()]">
+      <error>org.mockito.exceptions.base.MockitoException: 
+Only void methods can doNothing()!
+Example of correct use of doNothing():
+    doNothing().
+    doThrow(new RuntimeException())
+    .when(mock).someVoidMethod();
+Above means:
+someVoidMethod() does nothing the 1st time but throws an exception the 2nd time is called&#13;
+	at com.food.delivery.services.MenuServiceImplTest.testAddMenu(MenuServiceImplTest.java:74)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="testGetMenuByRestaurantId_withFilters" classname="com.food.delivery.services.MenuServiceImplTest" time="0.006" displayname="testGetMenuByRestaurantId_withFilters()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.services.MenuServiceImplTest]/[method:testGetMenuByRestaurantId_withFilters()]"/>
+  </testsuite>
+</testrun>

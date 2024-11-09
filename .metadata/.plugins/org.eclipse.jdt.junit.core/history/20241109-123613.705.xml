@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="LoginRequestTest" project="food" tests="5" started="5" failures="0" errors="0" ignored="0">
+  <testsuite name="com.food.delivery.pojo.LoginRequestTest" time="0.016" displayname="LoginRequestTest" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.LoginRequestTest]">
+    <testcase name="testSetPassword" classname="com.food.delivery.pojo.LoginRequestTest" time="0.002" displayname="testSetPassword()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.LoginRequestTest]/[method:testSetPassword()]"/>
+    <testcase name="testGetPassword" classname="com.food.delivery.pojo.LoginRequestTest" time="0.002" displayname="testGetPassword()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.LoginRequestTest]/[method:testGetPassword()]"/>
+    <testcase name="testSetUsername" classname="com.food.delivery.pojo.LoginRequestTest" time="0.003" displayname="testSetUsername()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.LoginRequestTest]/[method:testSetUsername()]"/>
+    <testcase name="testLoginRequestConstructor" classname="com.food.delivery.pojo.LoginRequestTest" time="0.002" displayname="testLoginRequestConstructor()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.LoginRequestTest]/[method:testLoginRequestConstructor()]"/>
+    <testcase name="testGetUsername" classname="com.food.delivery.pojo.LoginRequestTest" time="0.001" displayname="testGetUsername()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.LoginRequestTest]/[method:testGetUsername()]"/>
+  </testsuite>
+</testrun>

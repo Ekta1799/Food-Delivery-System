@@ -1,0 +1,24 @@
+package com.food.delivery.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.food.delivery.model.RestaurantProfile;
+import com.food.delivery.repository.RestaurantProfileRepository;
+
+public class RestaurantProfileServiceImpl {
+
+	@Autowired
+	RestaurantProfileRepository restaurantProfileRepository;
+
+	public void addCustomerProfile(RestaurantProfile customer) {
+		restaurantProfileRepository.save(customer);
+	}
+
+	public RestaurantProfile getRestaurantProfile(String firstname) {
+		RestaurantProfile restaurantProfile = new RestaurantProfile();
+
+		restaurantProfile = restaurantProfileRepository.getRestaurantProfile(firstname);
+
+		return restaurantProfile;
+	}
+}

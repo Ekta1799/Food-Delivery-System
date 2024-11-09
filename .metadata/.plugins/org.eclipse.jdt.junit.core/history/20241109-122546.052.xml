@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="CustomerProfileTest" project="food" tests="8" started="8" failures="0" errors="0" ignored="0">
+  <testsuite name="com.food.delivery.model.CustomerProfileTest" time="0.045" displayname="CustomerProfileTest" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.CustomerProfileTest]">
+    <testcase name="testGetAndSetLastname" classname="com.food.delivery.model.CustomerProfileTest" time="0.021" displayname="testGetAndSetLastname()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.CustomerProfileTest]/[method:testGetAndSetLastname()]"/>
+    <testcase name="testGetAndSetId" classname="com.food.delivery.model.CustomerProfileTest" time="0.002" displayname="testGetAndSetId()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.CustomerProfileTest]/[method:testGetAndSetId()]"/>
+    <testcase name="testGetAndSetFirstname" classname="com.food.delivery.model.CustomerProfileTest" time="0.003" displayname="testGetAndSetFirstname()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.CustomerProfileTest]/[method:testGetAndSetFirstname()]"/>
+    <testcase name="testGetAndSetAddress" classname="com.food.delivery.model.CustomerProfileTest" time="0.005" displayname="testGetAndSetAddress()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.CustomerProfileTest]/[method:testGetAndSetAddress()]"/>
+    <testcase name="testGetAndSetUsername" classname="com.food.delivery.model.CustomerProfileTest" time="0.001" displayname="testGetAndSetUsername()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.CustomerProfileTest]/[method:testGetAndSetUsername()]"/>
+    <testcase name="testGetAndSetUserId" classname="com.food.delivery.model.CustomerProfileTest" time="0.001" displayname="testGetAndSetUserId()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.CustomerProfileTest]/[method:testGetAndSetUserId()]"/>
+    <testcase name="testGetAndSetPhoneNo" classname="com.food.delivery.model.CustomerProfileTest" time="0.002" displayname="testGetAndSetPhoneNo()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.CustomerProfileTest]/[method:testGetAndSetPhoneNo()]"/>
+    <testcase name="testGetAndSetPaymentType" classname="com.food.delivery.model.CustomerProfileTest" time="0.002" displayname="testGetAndSetPaymentType()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.CustomerProfileTest]/[method:testGetAndSetPaymentType()]"/>
+  </testsuite>
+</testrun>

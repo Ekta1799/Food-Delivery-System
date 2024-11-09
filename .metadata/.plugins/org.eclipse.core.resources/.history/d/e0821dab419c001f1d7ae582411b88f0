@@ -1,0 +1,27 @@
+package com.food.delivery.pojo;
+
+import com.food.delivery.model.Menu;
+
+public class RestaurantResource {
+
+	private String restaurant_name;
+
+	private Menu menu;
+
+	public String getRestaurant_name() {
+		return restaurant_name;
+	}
+
+	public void setRestaurant_name(String restaurant_name) {
+		this.restaurant_name = restaurant_name;
+	}
+
+	public Menu getMenu() {
+		return menu;
+	}
+
+	public void setMenu(Menu menu) {
+		this.menu = menu;
+	}
+
+}

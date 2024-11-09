@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="MenuTest" project="food" tests="6" started="6" failures="0" errors="0" ignored="0">
+  <testsuite name="com.food.delivery.model.MenuTest" time="0.029" displayname="MenuTest" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.MenuTest]">
+    <testcase name="testSetAndGetRestaurantId" classname="com.food.delivery.model.MenuTest" time="0.01" displayname="testSetAndGetRestaurantId()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.MenuTest]/[method:testSetAndGetRestaurantId()]"/>
+    <testcase name="testSetAndGetVeg" classname="com.food.delivery.model.MenuTest" time="0.005" displayname="testSetAndGetVeg()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.MenuTest]/[method:testSetAndGetVeg()]"/>
+    <testcase name="testSetAndGetCuisine" classname="com.food.delivery.model.MenuTest" time="0.002" displayname="testSetAndGetCuisine()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.MenuTest]/[method:testSetAndGetCuisine()]"/>
+    <testcase name="testSetAndGetPrice" classname="com.food.delivery.model.MenuTest" time="0.002" displayname="testSetAndGetPrice()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.MenuTest]/[method:testSetAndGetPrice()]"/>
+    <testcase name="testSetAndGetId" classname="com.food.delivery.model.MenuTest" time="0.001" displayname="testSetAndGetId()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.MenuTest]/[method:testSetAndGetId()]"/>
+    <testcase name="testSetAndGetFoodItem" classname="com.food.delivery.model.MenuTest" time="0.003" displayname="testSetAndGetFoodItem()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.MenuTest]/[method:testSetAndGetFoodItem()]"/>
+  </testsuite>
+</testrun>

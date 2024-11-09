@@ -1,0 +1,5 @@
+package com.food.delivery.configuration;
+
+public class WebSecurityConfig {
+
+}

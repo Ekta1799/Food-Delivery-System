@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="OrdersControllerTest" project="food" tests="7" started="7" failures="0" errors="7" ignored="0">
+  <testsuite name="com.food.delivery.controller.OrdersControllerTest" time="0.646" displayname="OrdersControllerTest" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.OrdersControllerTest]">
+    <testcase name="testUpdateOrderStatus_Failure" classname="com.food.delivery.controller.OrdersControllerTest" time="0.466" displayname="testUpdateOrderStatus_Failure()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.OrdersControllerTest]/[method:testUpdateOrderStatus_Failure()]">
+      <error>java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'com.food.delivery.controller.OrderController#188cbcde' method 
+com.food.delivery.controller.OrderController#getOrders(String, HttpServletRequest)
+to {GET [/orders], produces [application/json]}: There is already 'com.food.delivery.controller.OrderController#188cbcde' bean method
+com.food.delivery.controller.OrderController#getOrderStatusByCustomer(String, String, HttpServletRequest) mapped.&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.validateMethodMapping(AbstractHandlerMethodMapping.java:674)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:636)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.registerHandlerMethod(AbstractHandlerMethodMapping.java:331)&#13;
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.registerHandlerMethod(RequestMappingHandlerMapping.java:508)&#13;
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.registerHandlerMethod(RequestMappingHandlerMapping.java:84)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lambda$detectHandlerMethods$2(AbstractHandlerMethodMapping.java:298)&#13;
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:721)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.detectHandlerMethods(AbstractHandlerMethodMapping.java:296)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.processCandidateBean(AbstractHandlerMethodMapping.java:265)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:224)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.afterPropertiesSet(AbstractHandlerMethodMapping.java:212)&#13;
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:239)&#13;
+	at org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder.registerMvcSingletons(StandaloneMockMvcBuilder.java:419)&#13;
+	at org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder.initWebAppContext(StandaloneMockMvcBuilder.java:391)&#13;
+	at org.springframework.test.web.servlet.setup.AbstractMockMvcBuilder.build(AbstractMockMvcBuilder.java:171)&#13;
+	at com.food.delivery.controller.OrdersControllerTest.setUp(OrdersControllerTest.java:44)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="testAddOrder_Success" classname="com.food.delivery.controller.OrdersControllerTest" time="0.017" displayname="testAddOrder_Success()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.OrdersControllerTest]/[method:testAddOrder_Success()]">
+      <error>java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'com.food.delivery.controller.OrderController#541179e7' method 
+com.food.delivery.controller.OrderController#getOrders(String, HttpServletRequest)
+to {GET [/orders], produces [application/json]}: There is already 'com.food.delivery.controller.OrderController#541179e7' bean method
+com.food.delivery.controller.OrderController#getOrderStatusByCustomer(String, String, HttpServletRequest) mapped.&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.validateMethodMapping(AbstractHandlerMethodMapping.java:674)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:636)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.registerHandlerMethod(AbstractHandlerMethodMapping.java:331)&#13;
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.registerHandlerMethod(RequestMappingHandlerMapping.java:508)&#13;
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.registerHandlerMethod(RequestMappingHandlerMapping.java:84)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lambda$detectHandlerMethods$2(AbstractHandlerMethodMapping.java:298)&#13;
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:721)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.detectHandlerMethods(AbstractHandlerMethodMapping.java:296)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.processCandidateBean(AbstractHandlerMethodMapping.java:265)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:224)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.afterPropertiesSet(AbstractHandlerMethodMapping.java:212)&#13;
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:239)&#13;
+	at org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder.registerMvcSingletons(StandaloneMockMvcBuilder.java:419)&#13;
+	at org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder.initWebAppContext(StandaloneMockMvcBuilder.java:391)&#13;
+	at org.springframework.test.web.servlet.setup.AbstractMockMvcBuilder.build(AbstractMockMvcBuilder.java:171)&#13;
+	at com.food.delivery.controller.OrdersControllerTest.setUp(OrdersControllerTest.java:44)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="testGetOrders_NotFound" classname="com.food.delivery.controller.OrdersControllerTest" time="0.02" displayname="testGetOrders_NotFound()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.OrdersControllerTest]/[method:testGetOrders_NotFound()]">
+      <error>java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'com.food.delivery.controller.OrderController#69afa141' method 
+com.food.delivery.controller.OrderController#getOrders(String, HttpServletRequest)
+to {GET [/orders], produces [application/json]}: There is already 'com.food.delivery.controller.OrderController#69afa141' bean method
+com.food.delivery.controller.OrderController#getOrderStatusByCustomer(String, String, HttpServletRequest) mapped.&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.validateMethodMapping(AbstractHandlerMethodMapping.java:674)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:636)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.registerHandlerMethod(AbstractHandlerMethodMapping.java:331)&#13;
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.registerHandlerMethod(RequestMappingHandlerMapping.java:508)&#13;
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.registerHandlerMethod(RequestMappingHandlerMapping.java:84)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lambda$detectHandlerMethods$2(AbstractHandlerMethodMapping.java:298)&#13;
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:721)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.detectHandlerMethods(AbstractHandlerMethodMapping.java:296)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.processCandidateBean(AbstractHandlerMethodMapping.java:265)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:224)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.afterPropertiesSet(AbstractHandlerMethodMapping.java:212)&#13;
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:239)&#13;
+	at org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder.registerMvcSingletons(StandaloneMockMvcBuilder.java:419)&#13;
+	at org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder.initWebAppContext(StandaloneMockMvcBuilder.java:391)&#13;
+	at org.springframework.test.web.servlet.setup.AbstractMockMvcBuilder.build(AbstractMockMvcBuilder.java:171)&#13;
+	at com.food.delivery.controller.OrdersControllerTest.setUp(OrdersControllerTest.java:44)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="testAddOrder_BadRequest" classname="com.food.delivery.controller.OrdersControllerTest" time="0.021" displayname="testAddOrder_BadRequest()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.OrdersControllerTest]/[method:testAddOrder_BadRequest()]">
+      <error>java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'com.food.delivery.controller.OrderController#16a35bd' method 
+com.food.delivery.controller.OrderController#getOrders(String, HttpServletRequest)
+to {GET [/orders], produces [application/json]}: There is already 'com.food.delivery.controller.OrderController#16a35bd' bean method
+com.food.delivery.controller.OrderController#getOrderStatusByCustomer(String, String, HttpServletRequest) mapped.&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.validateMethodMapping(AbstractHandlerMethodMapping.java:674)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:636)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.registerHandlerMethod(AbstractHandlerMethodMapping.java:331)&#13;
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.registerHandlerMethod(RequestMappingHandlerMapping.java:508)&#13;
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.registerHandlerMethod(RequestMappingHandlerMapping.java:84)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lambda$detectHandlerMethods$2(AbstractHandlerMethodMapping.java:298)&#13;
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:721)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.detectHandlerMethods(AbstractHandlerMethodMapping.java:296)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.processCandidateBean(AbstractHandlerMethodMapping.java:265)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:224)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.afterPropertiesSet(AbstractHandlerMethodMapping.java:212)&#13;
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:239)&#13;
+	at org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder.registerMvcSingletons(StandaloneMockMvcBuilder.java:419)&#13;
+	at org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder.initWebAppContext(StandaloneMockMvcBuilder.java:391)&#13;
+	at org.springframework.test.web.servlet.setup.AbstractMockMvcBuilder.build(AbstractMockMvcBuilder.java:171)&#13;
+	at com.food.delivery.controller.OrdersControllerTest.setUp(OrdersControllerTest.java:44)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="testGetRestaurantList_Success" classname="com.food.delivery.controller.OrdersControllerTest" time="0.016" displayname="testGetRestaurantList_Success()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.OrdersControllerTest]/[method:testGetRestaurantList_Success()]">
+      <error>java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'com.food.delivery.controller.OrderController#71f1cc02' method 
+com.food.delivery.controller.OrderController#getOrders(String, HttpServletRequest)
+to {GET [/orders], produces [application/json]}: There is already 'com.food.delivery.controller.OrderController#71f1cc02' bean method
+com.food.delivery.controller.OrderController#getOrderStatusByCustomer(String, String, HttpServletRequest) mapped.&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.validateMethodMapping(AbstractHandlerMethodMapping.java:674)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:636)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.registerHandlerMethod(AbstractHandlerMethodMapping.java:331)&#13;
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.registerHandlerMethod(RequestMappingHandlerMapping.java:508)&#13;
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.registerHandlerMethod(RequestMappingHandlerMapping.java:84)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lambda$detectHandlerMethods$2(AbstractHandlerMethodMapping.java:298)&#13;
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:721)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.detectHandlerMethods(AbstractHandlerMethodMapping.java:296)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.processCandidateBean(AbstractHandlerMethodMapping.java:265)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:224)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.afterPropertiesSet(AbstractHandlerMethodMapping.java:212)&#13;
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:239)&#13;
+	at org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder.registerMvcSingletons(StandaloneMockMvcBuilder.java:419)&#13;
+	at org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder.initWebAppContext(StandaloneMockMvcBuilder.java:391)&#13;
+	at org.springframework.test.web.servlet.setup.AbstractMockMvcBuilder.build(AbstractMockMvcBuilder.java:171)&#13;
+	at com.food.delivery.controller.OrdersControllerTest.setUp(OrdersControllerTest.java:44)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="testGetOrders_Success" classname="com.food.delivery.controller.OrdersControllerTest" time="0.037" displayname="testGetOrders_Success()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.OrdersControllerTest]/[method:testGetOrders_Success()]">
+      <error>java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'com.food.delivery.controller.OrderController#eb6ec6' method 
+com.food.delivery.controller.OrderController#getOrders(String, HttpServletRequest)
+to {GET [/orders], produces [application/json]}: There is already 'com.food.delivery.controller.OrderController#eb6ec6' bean method
+com.food.delivery.controller.OrderController#getOrderStatusByCustomer(String, String, HttpServletRequest) mapped.&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.validateMethodMapping(AbstractHandlerMethodMapping.java:674)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:636)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.registerHandlerMethod(AbstractHandlerMethodMapping.java:331)&#13;
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.registerHandlerMethod(RequestMappingHandlerMapping.java:508)&#13;
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.registerHandlerMethod(RequestMappingHandlerMapping.java:84)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lambda$detectHandlerMethods$2(AbstractHandlerMethodMapping.java:298)&#13;
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:721)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.detectHandlerMethods(AbstractHandlerMethodMapping.java:296)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.processCandidateBean(AbstractHandlerMethodMapping.java:265)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:224)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.afterPropertiesSet(AbstractHandlerMethodMapping.java:212)&#13;
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:239)&#13;
+	at org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder.registerMvcSingletons(StandaloneMockMvcBuilder.java:419)&#13;
+	at org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder.initWebAppContext(StandaloneMockMvcBuilder.java:391)&#13;
+	at org.springframework.test.web.servlet.setup.AbstractMockMvcBuilder.build(AbstractMockMvcBuilder.java:171)&#13;
+	at com.food.delivery.controller.OrdersControllerTest.setUp(OrdersControllerTest.java:44)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="testUpdateOrderStatus_Success" classname="com.food.delivery.controller.OrdersControllerTest" time="0.029" displayname="testUpdateOrderStatus_Success()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.OrdersControllerTest]/[method:testUpdateOrderStatus_Success()]">
+      <error>java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'com.food.delivery.controller.OrderController#10a98392' method 
+com.food.delivery.controller.OrderController#getOrders(String, HttpServletRequest)
+to {GET [/orders], produces [application/json]}: There is already 'com.food.delivery.controller.OrderController#10a98392' bean method
+com.food.delivery.controller.OrderController#getOrderStatusByCustomer(String, String, HttpServletRequest) mapped.&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.validateMethodMapping(AbstractHandlerMethodMapping.java:674)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:636)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.registerHandlerMethod(AbstractHandlerMethodMapping.java:331)&#13;
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.registerHandlerMethod(RequestMappingHandlerMapping.java:508)&#13;
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.registerHandlerMethod(RequestMappingHandlerMapping.java:84)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lambda$detectHandlerMethods$2(AbstractHandlerMethodMapping.java:298)&#13;
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:721)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.detectHandlerMethods(AbstractHandlerMethodMapping.java:296)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.processCandidateBean(AbstractHandlerMethodMapping.java:265)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:224)&#13;
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.afterPropertiesSet(AbstractHandlerMethodMapping.java:212)&#13;
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:239)&#13;
+	at org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder.registerMvcSingletons(StandaloneMockMvcBuilder.java:419)&#13;
+	at org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder.initWebAppContext(StandaloneMockMvcBuilder.java:391)&#13;
+	at org.springframework.test.web.servlet.setup.AbstractMockMvcBuilder.build(AbstractMockMvcBuilder.java:171)&#13;
+	at com.food.delivery.controller.OrdersControllerTest.setUp(OrdersControllerTest.java:44)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+  </testsuite>
+</testrun>

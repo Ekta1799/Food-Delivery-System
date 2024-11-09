@@ -1,0 +1,11 @@
+package com.food.delivery.services;
+
+import com.food.delivery.model.Orders;
+
+public class OrdersServiceImpl implements OrdersService {
+
+	public void addOrders(Orders orders) {
+
+	}
+
+}

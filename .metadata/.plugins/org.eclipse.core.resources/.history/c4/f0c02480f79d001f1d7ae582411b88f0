@@ -1,0 +1,9 @@
+package com.food.delivery.facade;
+
+import com.food.delivery.pojo.OrdersResource;
+
+public class OrdersFacade {
+
+	public void addOrders(OrdersResource orders)
+
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="CustomerProfileResourceTest" project="food" tests="8" started="8" failures="0" errors="0" ignored="0">
+  <testsuite name="com.food.delivery.pojo.CustomerProfileResourceTest" time="0.016" displayname="CustomerProfileResourceTest" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.CustomerProfileResourceTest]">
+    <testcase name="testAddress" classname="com.food.delivery.pojo.CustomerProfileResourceTest" time="0.001" displayname="testAddress()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.CustomerProfileResourceTest]/[method:testAddress()]"/>
+    <testcase name="testPhoneNo" classname="com.food.delivery.pojo.CustomerProfileResourceTest" time="0.0" displayname="testPhoneNo()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.CustomerProfileResourceTest]/[method:testPhoneNo()]"/>
+    <testcase name="testEmptyCustomerProfile" classname="com.food.delivery.pojo.CustomerProfileResourceTest" time="0.002" displayname="testEmptyCustomerProfile()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.CustomerProfileResourceTest]/[method:testEmptyCustomerProfile()]"/>
+    <testcase name="testLastname" classname="com.food.delivery.pojo.CustomerProfileResourceTest" time="0.003" displayname="testLastname()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.CustomerProfileResourceTest]/[method:testLastname()]"/>
+    <testcase name="testSetAndGetProfileDetails" classname="com.food.delivery.pojo.CustomerProfileResourceTest" time="0.001" displayname="testSetAndGetProfileDetails()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.CustomerProfileResourceTest]/[method:testSetAndGetProfileDetails()]"/>
+    <testcase name="testUsername" classname="com.food.delivery.pojo.CustomerProfileResourceTest" time="0.0" displayname="testUsername()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.CustomerProfileResourceTest]/[method:testUsername()]"/>
+    <testcase name="testFirstname" classname="com.food.delivery.pojo.CustomerProfileResourceTest" time="0.001" displayname="testFirstname()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.CustomerProfileResourceTest]/[method:testFirstname()]"/>
+    <testcase name="testPaymentType" classname="com.food.delivery.pojo.CustomerProfileResourceTest" time="0.002" displayname="testPaymentType()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.CustomerProfileResourceTest]/[method:testPaymentType()]"/>
+  </testsuite>
+</testrun>

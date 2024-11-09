@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="AuthControllerTest" project="food" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="com.food.delivery.controller.AuthControllerTest" time="1.724" displayname="AuthControllerTest" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.AuthControllerTest]">
+    <testcase name="testRegisterUser_SuccessfulRegistration" classname="com.food.delivery.controller.AuthControllerTest" time="1.643" displayname="testRegisterUser_SuccessfulRegistration()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.AuthControllerTest]/[method:testRegisterUser_SuccessfulRegistration()]"/>
+    <testcase name="testRegisterUser_EmailExists" classname="com.food.delivery.controller.AuthControllerTest" time="0.031" displayname="testRegisterUser_EmailExists()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.AuthControllerTest]/[method:testRegisterUser_EmailExists()]"/>
+    <testcase name="testRegisterUser_UsernameExists" classname="com.food.delivery.controller.AuthControllerTest" time="0.027" displayname="testRegisterUser_UsernameExists()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.AuthControllerTest]/[method:testRegisterUser_UsernameExists()]"/>
+  </testsuite>
+</testrun>

@@ -1,0 +1,95 @@
+package com.food.delivery.controller;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
+import com.food.delivery.facade.RestaurantProfileFacade;
+import com.food.delivery.pojo.MenuResource;
+import com.food.delivery.pojo.MessageResponse;
+import com.food.delivery.pojo.RestaurantProfileResource;
+
+import jakarta.servlet.http.HttpServletRequest;
+
+@RestController
+public class RestaurantOwnerProfileController {
+	
+	private static final Logger logger = LoggerFactory.getLogger(RestaurantOwnerProfileController.class);
+
+	@Autowired
+	private RestaurantProfileFacade restaurantProfileFacade;
+
+	// POST
+	@CrossOrigin(origins = "*", exposedHeaders = "**")
+	@PreAuthorize("hasAnyRole('ROLE_RESTAURANT_OWNER')")
+	@PostMapping(value = "/restaurantProfile", produces = {
+			MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<?> addRestaurantOwnerProfile(@RequestBody RestaurantProfileResource restaurantResource) {
+
+		logger.debug("Creating Restaurant owner's profile");
+		
+		if(restaurantResource == null) {
+			return ResponseEntity.badRequest().body(new MessageResponse("Empty restuarnt profile!"));
+		}
+		// Call facade method to get books with optional search criteria
+		restaurantProfileFacade.addRestaurantProfile(restaurantResource);
+
+		return ResponseEntity.ok(new MessageResponse("Restaurant profile created successfully!"));
+	}
+
+	// GET - User profile info based on firstname of user (filter - true)
+	@CrossOrigin(origins = "*", exposedHeaders = "**")
+	@PreAuthorize("hasRole('ROLE_RESTAURANT_OWNER', 'ROLE_ADMIN')")
+	@GetMapping(value = "/restaurantProfile", produces = {
+			MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<?> getRestaurantProfiles(@RequestParam(value = "firstname", required = true) String firstname,
+			HttpServletRequest request) {
+		
+		if(firstname.isEmpty()) {
+			return ResponseEntity.badRequest()
+					.body(new MessageResponse("Please provide firstname of the resturant owner to view the profile."));
+		}
+
+		RestaurantProfileResource restaurantResource = new RestaurantProfileResource();
+		try {
+			// Call facade method to save user profile
+			restaurantResource = restaurantProfileFacade.getRestaurantProfile(firstname);
+
+		} catch (Exception e) {
+			return ResponseEntity.badRequest()
+					.body(new MessageResponse("Error: Restaurant owner profile not found for user " + firstname + "!"));
+		}
+
+		return ResponseEntity.ok(restaurantResource);
+	}
+
+	// PUT - Update user profile
+	@CrossOrigin(origins = "*", exposedHeaders = "**")
+	@PreAuthorize("hasRole('ROLE_RESTAURANT_OWNER')")
+	@PutMapping("/restaurantProfile")
+	public ResponseEntity<?> updateRestaurantProfile(@RequestBody RestaurantProfileResource restaurantResource) {
+
+		boolean response = restaurantProfileFacade.updateRestaurantProfile(restaurantResource);
+		if (!response) {
+			return ResponseEntity.badRequest().body(new MessageResponse("Error: User profile could not be created!"));
+		}
+
+		return ResponseEntity.ok(new MessageResponse("User Profile Updated successfully!"));
+	}
+
+	// POST
+	@CrossOrigin(origins = "*", exposedHeaders = "**")
+	@PreAuthorize("hasAnyRole('ROLE_RESTAURANT_OWNER')")
+	@RequestMapping(value = "/menu", method = { RequestMethod.POST }, produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<?> addMenuByRestaurantName(@RequestBody MenuResource menuResource) {
+
+		// Call facade method to get books with optional search criteria
+		restaurantProfileFacade.addMenu(menuResource);
+
+		return ResponseEntity.ok(new MessageResponse("Menu added successfully!"));
+	}
+
+}

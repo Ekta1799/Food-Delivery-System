@@ -1,0 +1,105 @@
+package com.food.delivery.facade;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.food.delivery.model.Orders;
+import com.food.delivery.model.User;
+import com.food.delivery.pojo.OrdersResource;
+import com.food.delivery.repository.MenuRepository;
+import com.food.delivery.repository.RestaurantProfileRepository;
+import com.food.delivery.repository.UserRepository;
+import com.food.delivery.services.OrdersService;
+
+public class OrdersFacade {
+
+	private static final Logger logger = LoggerFactory.getLogger(OrdersFacade.class);
+
+	@Autowired
+	UserRepository userRepository;
+
+	@Autowired
+	RestaurantProfileRepository restaurantProfileRepo;
+
+	@Autowired
+	MenuRepository menuRepo;
+
+	@Autowired
+	OrdersService ordersService;
+
+	public void addOrders(OrdersResource orders) {
+
+		Optional<User> userData = userRepository.findByUsername(orders.getUsername());
+		User userVal = userData.get();
+
+		Long customer_id = userVal.getId();
+
+		Long restuarant_id = restaurantProfileRepo.getRestaurantIdByRestaurantName(orders.getRestaurantName());
+
+		Long food_id = menuRepo.getFoodIdFromFoodName(orders.getFoodName());
+
+		Orders orderModel = new Orders();
+		orderModel.setCustomer_id(customer_id);
+		orderModel.setRestaurant_id(restuarant_id);
+		orderModel.setFood_id(restuarant_id);
+		orderModel.setFood_id(food_id);
+		orderModel.setFood_price(orders.getFood_price());
+
+		ordersService.addOrders(orderModel);
+	}
+
+	public boolean updateOrders(OrdersResource orders) {
+
+		Optional<User> userData = userRepository.findByUsername(orders.getUsername());
+		User userVal = userData.get();
+
+		Long customer_id = userVal.getId();
+
+		Long restuarant_id = restaurantProfileRepo.getRestaurantIdByRestaurantName(orders.getRestaurantName());
+
+		Long food_id = menuRepo.getFoodIdFromFoodName(orders.getFoodName());
+
+		String status = orders.getStatus();
+
+		try {
+			ordersService.updateStatus(customer_id, restuarant_id, food_id, status);
+		} catch (Exception e) {
+			logger.debug("Exception : " + e);
+		}
+
+		return true;
+	}
+
+	public OrdersResource getOrdersByRestaurantOwner(String restaurantName) {
+		OrdersResource orders = new OrdersResource();
+
+		Long restuarant_id = restaurantProfileRepo.getRestaurantIdByRestaurantName(restaurantName);
+
+		List<Orders> orderModel = ordersService.getOrdersByRestaurantOwner(restuarant_id);
+
+		for(Orders order : orderModel) {
+			
+			Optional<User> userData = userRepository.findByUsername(order.getUsername());
+			User userVal = userData.get();
+
+			Long customer_id = userVal.getId();
+
+			orders.setUsername(order.getCustomer_id());
+			orders.setFoodName(order.getFood_id());
+			orders.setRestaurantName(order.getRestaurant_id());
+			orders.setFood_price(order.getFood_price());
+			orders.setStatus(order.getStatus());
+			
+			
+		}
+		
+		
+
+		return orders;
+	}
+
+}

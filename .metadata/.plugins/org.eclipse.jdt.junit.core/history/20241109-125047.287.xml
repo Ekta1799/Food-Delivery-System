@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="CustomerProfileServiceImplTest" project="food" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="com.food.delivery.services.CustomerProfileServiceImplTest" time="2.437" displayname="CustomerProfileServiceImplTest" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.services.CustomerProfileServiceImplTest]">
+    <testcase name="testAddCustomerProfile" classname="com.food.delivery.services.CustomerProfileServiceImplTest" time="2.416" displayname="testAddCustomerProfile()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.services.CustomerProfileServiceImplTest]/[method:testAddCustomerProfile()]"/>
+    <testcase name="testGetCustomerProfile" classname="com.food.delivery.services.CustomerProfileServiceImplTest" time="0.02" displayname="testGetCustomerProfile()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.services.CustomerProfileServiceImplTest]/[method:testGetCustomerProfile()]"/>
+  </testsuite>
+</testrun>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="OrdersFacadeTest" project="food" tests="4" started="4" failures="2" errors="0" ignored="0">
+  <testsuite name="com.food.delivery.facade.OrdersFacadeTest" time="3.143" displayname="OrdersFacadeTest" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.facade.OrdersFacadeTest]">
+    <testcase name="testGetOrdersByRestaurantOwner" classname="com.food.delivery.facade.OrdersFacadeTest" time="3.072" displayname="testGetOrdersByRestaurantOwner()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.facade.OrdersFacadeTest]/[method:testGetOrdersByRestaurantOwner()]">
+      <failure>
+        <expected>testUser</expected>
+        <actual>null</actual>
+        org.opentest4j.AssertionFailedError: expected: &lt;testUser&gt; but was: &lt;null&gt;&#13;
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)&#13;
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)&#13;
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)&#13;
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)&#13;
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)&#13;
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)&#13;
+	at com.food.delivery.facade.OrdersFacadeTest.testGetOrdersByRestaurantOwner(OrdersFacadeTest.java:115)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+
+      </failure>
+    </testcase>
+    <testcase name="testGetOrderStatusByCustomer" classname="com.food.delivery.facade.OrdersFacadeTest" time="0.017" displayname="testGetOrderStatusByCustomer()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.facade.OrdersFacadeTest]/[method:testGetOrderStatusByCustomer()]">
+      <failure>
+        <expected>testUser</expected>
+        <actual>null</actual>
+        org.opentest4j.AssertionFailedError: expected: &lt;testUser&gt; but was: &lt;null&gt;&#13;
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)&#13;
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)&#13;
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)&#13;
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)&#13;
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)&#13;
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)&#13;
+	at com.food.delivery.facade.OrdersFacadeTest.testGetOrderStatusByCustomer(OrdersFacadeTest.java:145)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+
+      </failure>
+    </testcase>
+    <testcase name="testUpdateOrders" classname="com.food.delivery.facade.OrdersFacadeTest" time="0.035" displayname="testUpdateOrders()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.facade.OrdersFacadeTest]/[method:testUpdateOrders()]"/>
+    <testcase name="testAddOrders" classname="com.food.delivery.facade.OrdersFacadeTest" time="0.015" displayname="testAddOrders()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.facade.OrdersFacadeTest]/[method:testAddOrders()]"/>
+  </testsuite>
+</testrun>

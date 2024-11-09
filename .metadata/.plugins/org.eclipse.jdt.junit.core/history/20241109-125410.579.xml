@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="OrdersServiceImplTest" project="food" tests="5" started="5" failures="0" errors="1" ignored="0">
+  <testsuite name="com.food.delivery.services.OrdersServiceImplTest" time="2.507" displayname="OrdersServiceImplTest" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.services.OrdersServiceImplTest]">
+    <testcase name="testGetOrdersByRestaurantOwner" classname="com.food.delivery.services.OrdersServiceImplTest" time="2.446" displayname="testGetOrdersByRestaurantOwner()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.services.OrdersServiceImplTest]/[method:testGetOrdersByRestaurantOwner()]"/>
+    <testcase name="testGetOrderStatusByCustomer_withoutStatus" classname="com.food.delivery.services.OrdersServiceImplTest" time="0.007" displayname="testGetOrderStatusByCustomer_withoutStatus()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.services.OrdersServiceImplTest]/[method:testGetOrderStatusByCustomer_withoutStatus()]"/>
+    <testcase name="testUpdateStatus" classname="com.food.delivery.services.OrdersServiceImplTest" time="0.008" displayname="testUpdateStatus()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.services.OrdersServiceImplTest]/[method:testUpdateStatus()]"/>
+    <testcase name="testGetOrderStatusByCustomer_withStatus" classname="com.food.delivery.services.OrdersServiceImplTest" time="0.008" displayname="testGetOrderStatusByCustomer_withStatus()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.services.OrdersServiceImplTest]/[method:testGetOrderStatusByCustomer_withStatus()]"/>
+    <testcase name="testAddOrders" classname="com.food.delivery.services.OrdersServiceImplTest" time="0.034" displayname="testAddOrders()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.services.OrdersServiceImplTest]/[method:testAddOrders()]">
+      <error>org.mockito.exceptions.base.MockitoException: 
+Only void methods can doNothing()!
+Example of correct use of doNothing():
+    doNothing().
+    doThrow(new RuntimeException())
+    .when(mock).someVoidMethod();
+Above means:
+someVoidMethod() does nothing the 1st time but throws an exception the 2nd time is called&#13;
+	at com.food.delivery.services.OrdersServiceImplTest.testAddOrders(OrdersServiceImplTest.java:38)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+  </testsuite>
+</testrun>

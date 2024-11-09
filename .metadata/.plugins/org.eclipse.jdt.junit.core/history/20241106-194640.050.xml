@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="AuthControllerTest" project="food" tests="3" started="3" failures="0" errors="3" ignored="0">
+  <testsuite name="com.food.delivery.controller.AuthControllerTest" time="0.303" displayname="AuthControllerTest" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.AuthControllerTest]">
+    <testcase name="testRegisterUser_SuccessfulRegistration" classname="com.food.delivery.controller.AuthControllerTest" time="0.247" displayname="testRegisterUser_SuccessfulRegistration()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.AuthControllerTest]/[method:testRegisterUser_SuccessfulRegistration()]">
+      <error>java.lang.NullPointerException: Cannot invoke "org.springframework.test.web.servlet.MockMvc.perform(org.springframework.test.web.servlet.RequestBuilder)" because "this.mockMvc" is null&#13;
+	at com.food.delivery.controller.AuthControllerTest.testRegisterUser_SuccessfulRegistration(AuthControllerTest.java:75)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="testRegisterUser_EmailExists" classname="com.food.delivery.controller.AuthControllerTest" time="0.017" displayname="testRegisterUser_EmailExists()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.AuthControllerTest]/[method:testRegisterUser_EmailExists()]">
+      <error>java.lang.NullPointerException: Cannot invoke "org.springframework.test.web.servlet.MockMvc.perform(org.springframework.test.web.servlet.RequestBuilder)" because "this.mockMvc" is null&#13;
+	at com.food.delivery.controller.AuthControllerTest.testRegisterUser_EmailExists(AuthControllerTest.java:108)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="testRegisterUser_UsernameExists" classname="com.food.delivery.controller.AuthControllerTest" time="0.013" displayname="testRegisterUser_UsernameExists()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.AuthControllerTest]/[method:testRegisterUser_UsernameExists()]">
+      <error>java.lang.NullPointerException: Cannot invoke "org.springframework.test.web.servlet.MockMvc.perform(org.springframework.test.web.servlet.RequestBuilder)" because "this.mockMvc" is null&#13;
+	at com.food.delivery.controller.AuthControllerTest.testRegisterUser_UsernameExists(AuthControllerTest.java:91)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+  </testsuite>
+</testrun>

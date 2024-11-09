@@ -1,0 +1,105 @@
+package com.food.delivery.services;
+
+import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+import com.food.delivery.exception.GeneralException;
+import com.food.delivery.model.User;
+import com.food.delivery.repository.UserRepository;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.*;
+import org.springframework.http.HttpStatus;
+
+class UserServiceImplTest {
+
+    @Mock
+    private UserRepository userRepository;
+
+    @InjectMocks
+    private UserServiceImpl userService;
+
+    private User user;
+
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
+        // Initializing a User object to be used in the tests
+        user = new User();
+        user.setUsername("john_doe");
+        user.setPassword("password");
+    }
+
+    @Test
+    void testSaveUser() {
+
+        when(userRepository.save(user)).thenReturn(user);
+
+        User savedUser = userService.saveUser(user);
+
+        assertNotNull(savedUser);
+        assertEquals("john_doe", savedUser.getUsername());
+        verify(userRepository, times(1)).save(user);
+    }
+
+    @Test
+    void testFindUserByUsername_UserFound() {
+
+        String username = "john_doe";
+        when(userRepository.findByUsername(username)).thenReturn(java.util.Optional.of(user));
+
+        User foundUser = userService.findUserByUsername(username);
+
+        assertNotNull(foundUser);
+        assertEquals("john_doe", foundUser.getUsername());
+        verify(userRepository, times(1)).findByUsername(username);
+    }
+
+    @Test
+    void testFindUserByUsername_UserNotFound() {
+
+        String username = "non_existing_user";
+        when(userRepository.findByUsername(username)).thenReturn(java.util.Optional.empty());
+
+        GeneralException exception = assertThrows(GeneralException.class, () -> {
+            userService.findUserByUsername(username);
+        });
+
+        assertEquals("User not found", exception.getMessage());
+        assertEquals(HttpStatus.NOT_FOUND, exception.getStatus());
+        verify(userRepository, times(1)).findByUsername(username);
+    }
+
+    @Test
+    void testExistsByUsername_UserExists() {
+
+        String username = "john_doe";
+        when(userRepository.findByUsername(username)).thenReturn(java.util.Optional.of(user));
+
+        Boolean exists = userService.existsByUsername(username);
+
+        assertTrue(exists);
+        verify(userRepository, times(1)).findByUsername(username);
+    }
+
+    @Test
+    void testExistsByUsername_UserNotExists() {
+
+        String username = "non_existing_user";
+        when(userRepository.findByUsername(username)).thenReturn(java.util.Optional.empty());
+
+        Boolean exists = userService.existsByUsername(username);
+
+        assertFalse(exists);
+        verify(userRepository, times(1)).findByUsername(username);
+    }
+
+    @Test
+    void testUpdatePassword() {
+    	String newPassword = "new_password";
+        String username = "john_doe";
+        userService.updatePassword(newPassword, username);
+
+        verify(userRepository, times(1)).updatePassword(newPassword, username);
+    }
+}

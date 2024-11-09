@@ -1,0 +1,24 @@
+package com.food.delivery.facade;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.food.delivery.model.User;
+import com.food.delivery.pojo.OrdersResource;
+import com.food.delivery.repository.UserRepository;
+
+public class OrdersFacade {
+	
+	@Autowired
+	UserRepository userRepository;
+
+	public void addOrders(OrdersResource orders) {
+		
+		Optional<User> userData = userRepository.findByUsername(orders.getu);
+		User userVal = userData.get();
+		
+		
+	}
+
+}

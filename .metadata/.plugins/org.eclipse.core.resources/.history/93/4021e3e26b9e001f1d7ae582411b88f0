@@ -1,0 +1,62 @@
+package com.food.delivery.services;
+
+import static org.mockito.Mockito.*;
+
+import com.food.delivery.model.RestaurantOwnerProfile;
+import com.food.delivery.repository.RestaurantProfileRepository;
+import com.food.delivery.repository.MenuRepository;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.*;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class RestaurantProfileServiceImplTest {
+
+    @Mock
+    private RestaurantProfileRepository restaurantProfileRepository;
+
+    @Mock
+    private MenuRepository menuRepository;
+
+    @InjectMocks
+    private RestaurantProfileServiceImpl restaurantProfileService;
+
+    private RestaurantOwnerProfile restaurantProfile;
+
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
+        restaurantProfile = new RestaurantOwnerProfile();
+        restaurantProfile.setFirstName("John");
+        restaurantProfile.setRestaurantId(1L);
+        restaurantProfile.setRestaurantName("Good Food");
+    }
+
+    @Test
+    void testAddRestaurantProfile() {
+        // Arrange
+        doNothing().when(restaurantProfileRepository).save(restaurantProfile);
+
+        // Act
+        restaurantProfileService.addRestaurantProfile(restaurantProfile);
+
+        // Assert
+        verify(restaurantProfileRepository, times(1)).save(restaurantProfile);
+    }
+
+    @Test
+    void testGetRestaurantProfile() {
+        // Arrange
+        String firstName = "John";
+        when(restaurantProfileRepository.getRestaurantProfile(firstName)).thenReturn(restaurantProfile);
+
+        // Act
+        RestaurantOwnerProfile result = restaurantProfileService.getRestaurantProfile(firstName);
+
+        // Assert
+        assertNotNull(result);
+        assertEquals("John", result.getFirstName());
+        verify(restaurantProfileRepository, times(1)).getRestaurantProfile(firstName);
+    }
+}

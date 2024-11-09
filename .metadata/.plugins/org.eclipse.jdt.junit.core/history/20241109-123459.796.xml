@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="JWTResponseTest" project="food" tests="6" started="6" failures="0" errors="0" ignored="0">
+  <testsuite name="com.food.delivery.pojo.JWTResponseTest" time="0.041" displayname="JWTResponseTest" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.JWTResponseTest]">
+    <testcase name="testAccessToken" classname="com.food.delivery.pojo.JWTResponseTest" time="0.022" displayname="testAccessToken()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.JWTResponseTest]/[method:testAccessToken()]"/>
+    <testcase name="testEmail" classname="com.food.delivery.pojo.JWTResponseTest" time="0.002" displayname="testEmail()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.JWTResponseTest]/[method:testEmail()]"/>
+    <testcase name="testId" classname="com.food.delivery.pojo.JWTResponseTest" time="0.002" displayname="testId()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.JWTResponseTest]/[method:testId()]"/>
+    <testcase name="testUsername" classname="com.food.delivery.pojo.JWTResponseTest" time="0.003" displayname="testUsername()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.JWTResponseTest]/[method:testUsername()]"/>
+    <testcase name="testTokenType" classname="com.food.delivery.pojo.JWTResponseTest" time="0.002" displayname="testTokenType()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.JWTResponseTest]/[method:testTokenType()]"/>
+    <testcase name="testConstructor" classname="com.food.delivery.pojo.JWTResponseTest" time="0.002" displayname="testConstructor()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.JWTResponseTest]/[method:testConstructor()]"/>
+  </testsuite>
+</testrun>

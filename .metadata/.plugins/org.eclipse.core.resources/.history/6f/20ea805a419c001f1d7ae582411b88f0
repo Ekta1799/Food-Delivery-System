@@ -1,0 +1,153 @@
+package com.food.delivery.facade;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.food.delivery.model.Menu;
+import com.food.delivery.model.RestaurantOwnerProfile;
+import com.food.delivery.model.User;
+import com.food.delivery.pojo.MenuResource;
+import com.food.delivery.pojo.RestaurantProfileResource;
+import com.food.delivery.pojo.RestaurantResource;
+import com.food.delivery.repository.RestaurantProfileRepository;
+import com.food.delivery.repository.UserRepository;
+import com.food.delivery.services.MenuService;
+import com.food.delivery.services.RestaurantProfileService;
+
+@Component
+public class RestaurantProfileFacade {
+
+	private static final Logger logger = LoggerFactory.getLogger(CustomerProfileFacade.class);
+
+	@Autowired
+	private RestaurantProfileService service;
+
+	@Autowired
+	RestaurantProfileRepository restaurantProfileRepo;
+
+	@Autowired
+	UserRepository userRepository;
+
+	@Autowired
+	private MenuService menuService;
+
+	public void addRestaurantProfile(RestaurantProfileResource restaurantResource) {
+
+		RestaurantOwnerProfile restaurant = new RestaurantOwnerProfile();
+		restaurant.setFirstname(restaurantResource.getFirstname());
+		restaurant.setLastname(restaurantResource.getLastname());
+		restaurant.setUsername(restaurantResource.getUsername());
+		restaurant.setAddress(restaurantResource.getAddress());
+		restaurant.setPhone_no(restaurantResource.getPhone_no());
+		restaurant.setRestaurant_name(restaurantResource.getRestaurant_name());
+		restaurant.setHours_of_operation(restaurantResource.getHours_of_operation());
+
+//		Long userId = userRepository.userByUsername(book.getUsername());
+//		bookModel.setUser_id(userId);
+//		logger.debug("user id = "+userId);
+
+		service.addRestaurantProfile(restaurant);
+
+	}
+
+	public RestaurantProfileResource getRestaurantProfile(String firstName) {
+
+		RestaurantOwnerProfile restaurantProfile = new RestaurantOwnerProfile();
+
+		restaurantProfile = service.getRestaurantProfile(firstName);
+
+		RestaurantProfileResource restaurantProfileResource = convertDTOtoResource(restaurantProfile);
+
+		return restaurantProfileResource;
+
+	}
+
+	private RestaurantProfileResource convertDTOtoResource(RestaurantOwnerProfile restaurant) {
+		RestaurantProfileResource restaurantProfileResource = new RestaurantProfileResource();
+
+		restaurantProfileResource.setFirstname(restaurant.getFirstname());
+		restaurantProfileResource.setLastname(restaurant.getLastname());
+		restaurantProfileResource.setAddress(restaurant.getAddress());
+		restaurantProfileResource.setUsername(restaurant.getUsername());
+		restaurantProfileResource.setRestaurant_name(restaurant.getRestaurant_name());
+		restaurantProfileResource.setHours_of_operation(restaurant.getHours_of_operation());
+
+		return restaurantProfileResource;
+	}
+
+	public boolean updateRestaurantProfile(RestaurantProfileResource restaurantProfileResource) {
+
+		String username = restaurantProfileResource.getUsername();
+		String firstname = restaurantProfileResource.getFirstname();
+		String lastname = restaurantProfileResource.getLastname();
+		String phoneNo = restaurantProfileResource.getPhone_no();
+		String address = restaurantProfileResource.getAddress();
+		String restaurant = restaurantProfileResource.getRestaurant_name();
+		int hrs = restaurantProfileResource.getHours_of_operation();
+		
+		Optional<User> userData = userRepository.findByUsername(username);
+		User userVal = userData.get();
+
+		if (restaurantProfileRepo.existsByUserId(userVal.getId())) {
+
+			Optional<RestaurantOwnerProfile> restrnt = restaurantProfileRepo.findByUsername(username);
+			RestaurantOwnerProfile restrnt1 = restrnt.get();
+
+			try {
+				
+				restaurantProfileRepo.updateRestaurantProfile(restrnt1.getUser_id(), firstname, lastname, phoneNo, address,
+						restaurant, hrs);
+			} catch (Exception e) {
+				logger.error("Could not update user profile : {}", e);
+			}
+
+		} else {
+			logger.error("User profile does not exist for user ID: " + userVal.getId());
+		}
+		return true;
+	}
+
+	public List<RestaurantResource> getRestaurantList(String food_item, boolean veg, String cuisine) {
+
+		List<String> restaurantNames = restaurantProfileRepo.findAllRestaurants();
+
+		List<RestaurantResource> restaurants = new ArrayList<RestaurantResource>();
+		for (String restaurant_name : restaurantNames) {
+			Long restaurant_id = restaurantProfileRepo.getRestaurantIdByRestaurantName(restaurant_name);
+
+			Menu menu = menuService.getMenuByRestaurantId(restaurant_id, food_item,veg, cuisine);
+
+			RestaurantResource res = new RestaurantResource();
+			res.setRestaurant_name(restaurant_name);
+			res.setMenu(menu);
+			restaurants.add(res);
+		}
+
+		return restaurants;
+
+	}
+
+	public void addMenu(MenuResource menuResource) {
+
+		Menu menu = new Menu();
+
+		menu.setFood_item(menuResource.getFood_item());
+		menu.setCuisine(menuResource.getCuisine());
+		menu.setPrice(menuResource.getPrice());
+		menu.setVeg(menuResource.isVeg());
+
+		menu.setRestaurant_id(null);
+
+		Long restuarantId = restaurantProfileRepo.getRestaurantIdByRestaurantName(menuResource.getRestaurant_name());
+		menu.setRestaurant_id(restuarantId);
+
+		menuService.addMenu(menu);
+
+	}
+}

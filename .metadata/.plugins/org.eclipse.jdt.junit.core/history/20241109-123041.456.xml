@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="StatusTest" project="food" tests="6" started="6" failures="0" errors="0" ignored="0">
+  <testsuite name="com.food.delivery.model.StatusTest" time="0.025" displayname="StatusTest" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.StatusTest]">
+    <testcase name="testEnumValues" classname="com.food.delivery.model.StatusTest" time="0.0" displayname="testEnumValues()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.StatusTest]/[method:testEnumValues()]"/>
+    <testcase name="testEnumOrdinal" classname="com.food.delivery.model.StatusTest" time="0.001" displayname="testEnumOrdinal()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.StatusTest]/[method:testEnumOrdinal()]"/>
+    <testcase name="testEnumName" classname="com.food.delivery.model.StatusTest" time="0.002" displayname="testEnumName()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.StatusTest]/[method:testEnumName()]"/>
+    <testcase name="testEnumInvalidValueOf" classname="com.food.delivery.model.StatusTest" time="0.011" displayname="testEnumInvalidValueOf()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.StatusTest]/[method:testEnumInvalidValueOf()]"/>
+    <testcase name="testEnumValueOf" classname="com.food.delivery.model.StatusTest" time="0.002" displayname="testEnumValueOf()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.StatusTest]/[method:testEnumValueOf()]"/>
+    <testcase name="testEnumValuesLength" classname="com.food.delivery.model.StatusTest" time="0.001" displayname="testEnumValuesLength()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.StatusTest]/[method:testEnumValuesLength()]"/>
+  </testsuite>
+</testrun>

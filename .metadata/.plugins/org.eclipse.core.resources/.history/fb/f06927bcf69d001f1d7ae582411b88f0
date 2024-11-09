@@ -1,0 +1,122 @@
+package com.food.delivery.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.food.delivery.facade.CustomerProfileFacade;
+import com.food.delivery.facade.RestaurantProfileFacade;
+import com.food.delivery.pojo.CustomerProfileResource;
+import com.food.delivery.pojo.MenuResource;
+import com.food.delivery.pojo.MessageResponse;
+import com.food.delivery.pojo.OrdersResource;
+
+import jakarta.servlet.http.HttpServletRequest;
+
+@RestController
+public class OrderController {
+
+	private static final Logger logger = LoggerFactory.getLogger(CustomerProfileController.class);
+
+	@Autowired
+	private CustomerProfileFacade customerProfileFacade;
+
+	@Autowired
+	private RestaurantProfileFacade restaurantProfileFacade;
+
+	// POST
+	@CrossOrigin(origins = "*", exposedHeaders = "**")
+	@PreAuthorize("hasAnyRole('ROLE_CUSTOMER')")
+	@PostMapping(value = "/orders", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<?> addOrder(@RequestBody OrdersResource ordersResource) {
+
+		logger.info("Add order details");
+
+		if (ordersResource == null) {
+			return ResponseEntity.badRequest().body(new MessageResponse("Empty orders resource!"));
+		}
+		
+		if(ordersResource.getCustomerName().isEmpty()) {
+			return ResponseEntity.badRequest().body(new MessageResponse("Bad Request: Please provide customer name!"));
+		}
+
+		// Call facade method to get books with optional search criteria
+		customerProfileFacade.addCustomerProfile(customerResource);
+
+		return ResponseEntity.ok(new MessageResponse("Book successfully added into the book store!"));
+	}
+
+	// GET - User profile info based on firstname of user (filter - true)
+	@CrossOrigin(origins = "*", exposedHeaders = "**")
+	@PreAuthorize("hasRole('ROLE_CUSTOMER', 'ROLE_ADMIN')")
+	@GetMapping(value = "/customerProfile", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<?> getCustomerProfiles(@RequestParam(value = "firstname", required = true) String firstname,
+			HttpServletRequest request) {
+
+		logger.info("Get customer profile");
+
+		if (firstname.isEmpty()) {
+			return ResponseEntity.badRequest()
+					.body(new MessageResponse("Please provide firstname of the customer to view the profile."));
+		}
+		CustomerProfileResource customerProfile = new CustomerProfileResource();
+		try {
+			// Call facade method to save user profile
+			customerProfile = customerProfileFacade.getCustomerProfile(firstname);
+
+		} catch (Exception e) {
+			return ResponseEntity.badRequest()
+					.body(new MessageResponse("Error: User profile not found for user " + firstname + "!"));
+		}
+
+		return ResponseEntity.ok(customerProfile);
+	}
+
+	// PUT - Update user profile
+	@CrossOrigin(origins = "*", exposedHeaders = "**")
+	@PreAuthorize("hasRole('ROLE_CUSTOMER')")
+	@PutMapping("/customerProfile")
+	public ResponseEntity<?> updateCustomerProfile(@RequestBody CustomerProfileResource customerProfileResource) {
+
+		boolean response = customerProfileFacade.updateCustomerProfile(customerProfileResource);
+		if (!response) {
+			return ResponseEntity.badRequest().body(new MessageResponse("Error: User profile could not be updated!"));
+		}
+
+		return ResponseEntity.ok(new MessageResponse("User Profile Updated successfully!"));
+	}
+
+	// GET - User profile info based on firstname of user (filter - true)
+	@CrossOrigin(origins = "*", exposedHeaders = "**")
+	@PreAuthorize("hasAnyRole('ROLE_CUSTOMER', 'ROLE_ADMIN')")
+	@GetMapping(value = "/restaurants", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<?> getRestaurantList(@RequestParam(value = "food_item", required = false) String food_item,
+			@RequestParam(value = "veg", required = false) Boolean veg,
+			@RequestParam(value = "cuisine", required = false) String cuisine, HttpServletRequest request) {
+
+		List<MenuResource> restaurants = new ArrayList<MenuResource>();
+		logger.debug("Get Restaurants' list");
+		try {
+			// Call facade method to save user profile
+			restaurants = restaurantProfileFacade.getRestaurantList(food_item, veg, cuisine);
+
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().body(new MessageResponse("Error: Restaurants could not be retrieved!"));
+		}
+
+		return ResponseEntity.ok(restaurants);
+	}
+}

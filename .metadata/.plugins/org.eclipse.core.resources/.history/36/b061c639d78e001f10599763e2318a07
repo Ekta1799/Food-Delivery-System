@@ -1,0 +1,32 @@
+package com.food.delivery.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.food.delivery.model.UserProfile;
+import com.food.delivery.repository.UserProfileRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class UserProfileServiceImpl implements UserProfileService {
+	
+	@Autowired
+	UserprofileRepository userprofileRepo;
+	
+	public void createUserProfile(Userprofile userprofile) {
+		userprofileRepo.save(userprofile);
+	}
+
+	public Userprofile getUserProfile(String firstName) {
+
+		Userprofile res = new Userprofile();
+
+		res = userprofileRepo.getUserProfile(firstName);
+
+		return res;
+	}
+
+
+}

@@ -1,0 +1,77 @@
+package com.food.delivery.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.food.delivery.facade.UserProfileFacade;
+import com.food.delivery.model.UserProfile;
+import com.food.delivery.pojo.MessageResponse;
+import com.food.delivery.pojo.UserProfileRequest;
+import com.food.delivery.pojo.UserRequest;
+
+import jakarta.servlet.http.HttpServletRequest;
+
+@RestController
+public class UserProfileController {
+
+	@Autowired
+	private UserProfileFacade userProfileFacade;
+
+	// GET - User profile info based on firstname of user (filter - true)
+	@CrossOrigin(origins = "*", exposedHeaders = "**")
+	@PreAuthorize("hasRole('ROLE_USER')")
+	@RequestMapping(value = "/userProfile", method = { RequestMethod.GET }, produces = {
+			MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<?> getUserprofile(@RequestParam(value = "firstName", required = true) String firstName,
+			HttpServletRequest request) {
+
+		UserProfile userProfile = new UserProfile();
+		try {
+			// Call facade method to save user profile
+			userProfile = userProfileFacade.getUserProfile(firstName);
+
+		} catch (Exception e) {
+			return ResponseEntity.badRequest()
+					.body(new MessageResponse("Error: User profile not found for user " + firstName + "!"));
+		}
+
+		return ResponseEntity.ok(userProfile);
+	}
+
+	// PUT - Update user profile
+	@CrossOrigin(origins = "*", exposedHeaders = "**")
+	@PreAuthorize("hasRole('ROLE_USER')")
+	@PutMapping("/userProfile")
+	public ResponseEntity<?> updateUserProfile(@RequestBody UserProfileRequest userProfileRequest) {
+
+		boolean response = userProfileFacade.updateUserProfile(userProfileRequest);
+		if (!response) {
+			return ResponseEntity.badRequest().body(new MessageResponse("Error: User profile could not be created!"));
+		}
+
+		return ResponseEntity.ok(new MessageResponse("User Profile Updated successfully!"));
+	}
+	
+	@CrossOrigin(origins = "*", exposedHeaders = "**")
+	@PutMapping("/user")
+	@PreAuthorize("hasRole('ROLE_USER')")
+	public ResponseEntity<?> updateUserPassword(@RequestBody UserRequest userRequest) {
+
+		boolean response = userProfileFacade.updateUser(userRequest);
+		if (!response) {
+			return ResponseEntity.badRequest().body(new MessageResponse("Error: User password could not be updated!"));
+		}
+
+		return ResponseEntity.ok(new MessageResponse("User password Updated successfully!"));
+	}
+	
+}

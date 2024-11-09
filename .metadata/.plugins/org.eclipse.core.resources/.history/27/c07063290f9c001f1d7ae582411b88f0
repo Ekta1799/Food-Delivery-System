@@ -1,0 +1,12 @@
+package com.food.delivery.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.Data;
+
+@Entity
+@Data
+@Table(name = "payment")
+public class Payment {
+
+}

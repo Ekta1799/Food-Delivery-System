@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="ERoleTest" project="food" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="com.food.delivery.model.ERoleTest" time="0.003" displayname="ERoleTest" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.ERoleTest]">
+    <testcase name="testEnumValues" classname="com.food.delivery.model.ERoleTest" time="0.0" displayname="testEnumValues()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.ERoleTest]/[method:testEnumValues()]"/>
+    <testcase name="testEnumOrdinal" classname="com.food.delivery.model.ERoleTest" time="0.0" displayname="testEnumOrdinal()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.ERoleTest]/[method:testEnumOrdinal()]"/>
+    <testcase name="testEnumName" classname="com.food.delivery.model.ERoleTest" time="0.003" displayname="testEnumName()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.ERoleTest]/[method:testEnumName()]"/>
+  </testsuite>
+</testrun>

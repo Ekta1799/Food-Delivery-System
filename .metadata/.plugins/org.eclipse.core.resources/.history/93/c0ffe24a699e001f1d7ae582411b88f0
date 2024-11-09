@@ -1,0 +1,5 @@
+package com.food.delivery.pojo;
+
+public class MessageResponseTest {
+
+}

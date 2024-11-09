@@ -1,0 +1,19 @@
+package com.food.delivery.pojo;
+
+public class RestaurantProfileResource {
+	
+	private String firstname;
+
+	private String lastname;
+
+	private String username;
+	
+	private String restaurant_name;
+
+	private String phone_no;
+
+	private String address;
+
+	private String hours_of_operation;
+
+}

@@ -1,0 +1,26 @@
+package com.food.delivery.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.food.delivery.model.Menu;
+import com.food.delivery.repository.MenuRepository;
+
+public class MenuServiceImpl implements MenuService {
+
+	@Autowired
+	MenuRepository menuRepo;
+
+	public Menu getMenuByRestaurantId(Long restaurant_id, String food_item, boolean veg, String cuisine) {
+
+		Menu menu = new Menu();
+
+		if (food_item != null || veg || cuisine != null) {
+			menu = searchMenu(restaurant_id, food_item, veg, cuisine);
+		} else {
+			menu = menuRepo.getMenuByRestaurantId(restaurant_id);
+		}
+		return menu;
+
+	}
+
+}

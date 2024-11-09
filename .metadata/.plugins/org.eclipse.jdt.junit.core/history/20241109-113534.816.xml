@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="CustomerProfileFacadeTest" project="food" tests="6" started="6" failures="0" errors="1" ignored="0">
+  <testsuite name="com.food.delivery.facade.CustomerProfileFacadeTest" time="3.95" displayname="CustomerProfileFacadeTest" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.facade.CustomerProfileFacadeTest]">
+    <testcase name="testAddCustomerProfile" classname="com.food.delivery.facade.CustomerProfileFacadeTest" time="3.755" displayname="testAddCustomerProfile()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.facade.CustomerProfileFacadeTest]/[method:testAddCustomerProfile()]"/>
+    <testcase name="testGetCustomerProfile" classname="com.food.delivery.facade.CustomerProfileFacadeTest" time="0.062" displayname="testGetCustomerProfile()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.facade.CustomerProfileFacadeTest]/[method:testGetCustomerProfile()]"/>
+    <testcase name="testUpdateCustomerProfileWhenUserDoesNotExist" classname="com.food.delivery.facade.CustomerProfileFacadeTest" time="0.05" displayname="testUpdateCustomerProfileWhenUserDoesNotExist()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.facade.CustomerProfileFacadeTest]/[method:testUpdateCustomerProfileWhenUserDoesNotExist()]">
+      <error>java.util.NoSuchElementException: No value present&#13;
+	at java.base/java.util.Optional.get(Optional.java:143)&#13;
+	at com.food.delivery.facade.CustomerProfileFacade.updateCustomerProfile(CustomerProfileFacade.java:86)&#13;
+	at com.food.delivery.facade.CustomerProfileFacadeTest.testUpdateCustomerProfileWhenUserDoesNotExist(CustomerProfileFacadeTest.java:125)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="testUpdateCustomerProfileWhenExceptionOccurs" classname="com.food.delivery.facade.CustomerProfileFacadeTest" time="0.031" displayname="testUpdateCustomerProfileWhenExceptionOccurs()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.facade.CustomerProfileFacadeTest]/[method:testUpdateCustomerProfileWhenExceptionOccurs()]"/>
+    <testcase name="testUpdateCustomerProfileWhenUserExists" classname="com.food.delivery.facade.CustomerProfileFacadeTest" time="0.018" displayname="testUpdateCustomerProfileWhenUserExists()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.facade.CustomerProfileFacadeTest]/[method:testUpdateCustomerProfileWhenUserExists()]"/>
+    <testcase name="testUpdateCustomerProfileWhenProfileDoesNotExist" classname="com.food.delivery.facade.CustomerProfileFacadeTest" time="0.018" displayname="testUpdateCustomerProfileWhenProfileDoesNotExist()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.facade.CustomerProfileFacadeTest]/[method:testUpdateCustomerProfileWhenProfileDoesNotExist()]"/>
+  </testsuite>
+</testrun>

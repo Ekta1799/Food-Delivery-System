@@ -1,0 +1,10 @@
+package com.food.delivery.services;
+
+import com.food.delivery.model.UserProfile;
+
+public interface UserProfileService {
+	public void createUserProfile(UserProfile userProfile);
+
+	public UserProfile getUserProfile(String firstName);
+	
+}

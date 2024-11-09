@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="OrdersControllerTest" project="food" tests="6" started="6" failures="1" errors="0" ignored="0">
+  <testsuite name="com.food.delivery.controller.OrdersControllerTest" time="1.717" displayname="OrdersControllerTest" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.OrdersControllerTest]">
+    <testcase name="testUpdateOrderStatus_Failure" classname="com.food.delivery.controller.OrdersControllerTest" time="1.467" displayname="testUpdateOrderStatus_Failure()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.OrdersControllerTest]/[method:testUpdateOrderStatus_Failure()]"/>
+    <testcase name="testAddOrder_Success" classname="com.food.delivery.controller.OrdersControllerTest" time="0.096" displayname="testAddOrder_Success()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.OrdersControllerTest]/[method:testAddOrder_Success()]"/>
+    <testcase name="testGetOrders_NotFound" classname="com.food.delivery.controller.OrdersControllerTest" time="0.039" displayname="testGetOrders_NotFound()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.OrdersControllerTest]/[method:testGetOrders_NotFound()]"/>
+    <testcase name="testAddOrder_BadRequest" classname="com.food.delivery.controller.OrdersControllerTest" time="0.028" displayname="testAddOrder_BadRequest()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.OrdersControllerTest]/[method:testAddOrder_BadRequest()]"/>
+    <testcase name="testGetOrders_Success" classname="com.food.delivery.controller.OrdersControllerTest" time="0.03" displayname="testGetOrders_Success()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.OrdersControllerTest]/[method:testGetOrders_Success()]"/>
+    <testcase name="testUpdateOrderStatus_Success" classname="com.food.delivery.controller.OrdersControllerTest" time="0.032" displayname="testUpdateOrderStatus_Success()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.OrdersControllerTest]/[method:testUpdateOrderStatus_Success()]">
+      <failure>java.lang.AssertionError: Status expected:&lt;200&gt; but was:&lt;405&gt;&#13;
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:59)&#13;
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:122)&#13;
+	at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$9(StatusResultMatchers.java:637)&#13;
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:214)&#13;
+	at com.food.delivery.controller.OrdersControllerTest.testUpdateOrderStatus_Success(OrdersControllerTest.java:101)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</failure>
+    </testcase>
+  </testsuite>
+</testrun>

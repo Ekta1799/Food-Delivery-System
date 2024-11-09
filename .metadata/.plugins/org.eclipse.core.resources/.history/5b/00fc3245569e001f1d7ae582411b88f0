@@ -1,0 +1,22 @@
+package com.food.delivery.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.food.delivery.model.Orders;
+import com.food.delivery.repository.OrdersRepository;
+
+public class OrdersServiceImpl implements OrdersService {
+
+	@Autowired
+	OrdersRepository ordersRepo;
+
+	public void addOrders(Orders orders) {
+
+		ordersRepo.save(orders);
+	}
+	
+	public void updateStatus(String status) {
+		 ordersRepo.updateStatus(status);
+	}
+
+}

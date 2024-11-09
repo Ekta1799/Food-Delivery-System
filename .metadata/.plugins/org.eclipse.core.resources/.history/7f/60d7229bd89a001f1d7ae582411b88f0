@@ -1,0 +1,7 @@
+package com.food.delivery.services;
+
+public interface CustomerProfileService {
+	
+	public void addCustomerProfile(CustomerProfile customer);
+
+}

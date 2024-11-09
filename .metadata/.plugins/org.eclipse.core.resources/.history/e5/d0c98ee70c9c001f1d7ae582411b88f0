@@ -1,0 +1,141 @@
+package com.food.delivery.facade;
+
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.food.delivery.model.CustomerProfile;
+import com.food.delivery.model.User;
+import com.food.delivery.model.UserProfile;
+import com.food.delivery.pojo.CustomerProfileResource;
+import com.food.delivery.repository.CustomerProfileRepository;
+import com.food.delivery.repository.UserRepository;
+import com.food.delivery.services.CustomerProfileService;
+
+@Component
+public class CustomerProfileFacade {
+
+	@Autowired
+	private CustomerProfileService service;
+	
+	@Autowired
+	private CustomerProfileRepository customerProfileRepo;
+	
+	@Autowired
+	UserRepository userRepository;
+
+	public void addCustomerProfile(CustomerProfileResource customerResource) {
+
+		CustomerProfile customer = new CustomerProfile();
+		customer.setFirstName(customerResource.getFirstName());
+		customer.setLastName(customerResource.getLastName());
+		customer.setUsername(customerResource.getUsername());
+		customer.setAddress(customerResource.getAddress());
+		customer.setPhoneNo(customerResource.getPhoneNo());
+
+//		Long userId = userRepository.userByUsername(book.getUsername());
+//		bookModel.setUser_id(userId);
+//		logger.debug("user id = "+userId);
+
+		service.addCustomerProfile(customer);
+
+	}
+
+	public CustomerProfileResource getCustomerProfile(String firstName) {
+
+		CustomerProfile customerProfile = new CustomerProfile();
+
+		customerProfile = service.getCustomerProfile(firstName);
+
+		CustomerProfileResource customerProfileResource = convertDTOtoResource(customerProfile);
+
+		return customerProfileResource;
+
+	}
+
+	private CustomerProfileResource convertDTOtoResource(CustomerProfile customer) {
+		CustomerProfileResource customerProfileResource = new CustomerProfileResource();
+
+		customerProfileResource.setFirstName(customer.getFirstname());
+		customerProfileResource.setLastName(customer.getLastname());
+		customerProfileResource.setUsername(customer.getUsername());
+		customerProfileResource.setAddress(customer.getAddress());
+		customerProfileResource.setPhoneNo(customer.getPhoneNo());
+
+		return customerProfileResource;
+	}
+
+	public boolean updateCustomerProfile(CustomerProfileResource customerProfileResource) {
+
+		String firstName = null;
+		String lastName = null;
+		String username = null;
+		String phoneNo = null;
+
+		if (customerProfileResource.getUsername() != null) {
+			username = customerProfileResource.getUsername();
+		}
+		if (customerProfileResource.getFirstName() != null) {
+			firstName = customerProfileResource.getFirstName();
+		}
+		if (customerProfileResource.getLastName() != null) {
+			lastName = customerProfileResource.getLastName();
+		}
+		if (customerProfileResource.getPhoneNo() != null) {
+			phoneNo = customerProfileResource.getPhoneNo();
+		}
+
+		Optional<User> userData = userRepository.findByUsername(username);
+		User userVal = userData.get();
+
+		if (customerProfileRepo.existsByUserId(userVal.getId())) {
+
+			Optional<CustomerProfile> customer = customerProfileRepo.findByUsername(username);
+			CustomerProfile customer1 = customer.get();
+
+			Set<String> genres = new HashSet<String>(userProfileRequest.getFavGenre());
+
+			Set<String> readingPrefBooks = new HashSet<String>(userProfileRequest.getReadingPref());
+
+			Set<String> bookWishlistBooks = new HashSet<String>(userProfileRequest.getBookWishList());
+
+			Set<String> booksOwned = new HashSet<String>(userProfileRequest.getBookOwnedList());
+
+			try {
+//				userFavGenreRepo.deleteUserFavoriteGenresByUserId(user1.getUser().getId());
+//				logger.debug("..." + user1);
+//
+//				for (String newGenre : genres) {
+//					userFavGenreRepo.insertUserFavoriteGenreByUserId(user1.getUser().getId(), newGenre);
+//				}
+//
+//				userReadingPreferenceRepo.deleteUserReadingPreferenceByUserId(user1.getUser().getId());
+//				for (String newBook : readingPrefBooks) {
+//					userReadingPreferenceRepo.insertUserReadingPrefernceByUserId(user1.getUser().getId(), newBook);
+//				}
+//
+//				userBookOwnedRepo.deleteUserBookOwnedByUserId(user1.getUser().getId());
+//				for (String newBook : booksOwned) {
+//					userBookOwnedRepo.insertUserBookOwnedByUserId(user1.getUser().getId(), newBook);
+//				}
+//
+//				userBookWishRepo.deleteUserBookWishByUserId(user1.getUser().getId());
+//				for (String newBook : bookWishlistBooks) {
+//					userBookWishRepo.insertUserBookWishByUserId(user1.getUser().getId(), newBook);
+//				}
+
+				userprofileRepo.updateUserProfile(user1.getId(), firstName, lastName, phoneNo);
+			} catch (Exception e) {
+				logger.error("Could not update user profile : {}", e);
+			}
+
+		} else {
+			logger.error("User profile does not exist for user ID: " + userVal.getId());
+		}
+		return true;
+	}
+
+}

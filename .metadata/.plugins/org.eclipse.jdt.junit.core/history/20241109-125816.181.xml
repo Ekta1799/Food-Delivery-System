@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="UserDetailsServiceImplTest" project="food" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="com.food.delivery.services.UserDetailsServiceImplTest" time="3.028" displayname="UserDetailsServiceImplTest" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.services.UserDetailsServiceImplTest]">
+    <testcase name="testLoadUserByUsername_UserExists" classname="com.food.delivery.services.UserDetailsServiceImplTest" time="3.013" displayname="testLoadUserByUsername_UserExists()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.services.UserDetailsServiceImplTest]/[method:testLoadUserByUsername_UserExists()]"/>
+    <testcase name="testLoadUserByUsername_UserNotFound" classname="com.food.delivery.services.UserDetailsServiceImplTest" time="0.015" displayname="testLoadUserByUsername_UserNotFound()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.services.UserDetailsServiceImplTest]/[method:testLoadUserByUsername_UserNotFound()]"/>
+  </testsuite>
+</testrun>

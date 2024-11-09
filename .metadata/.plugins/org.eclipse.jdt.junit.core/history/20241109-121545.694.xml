@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="OrdersFacadeTest" project="food" tests="4" started="4" failures="0" errors="0" ignored="0">
+  <testsuite name="com.food.delivery.facade.OrdersFacadeTest" time="5.373" displayname="OrdersFacadeTest" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.facade.OrdersFacadeTest]">
+    <testcase name="testGetOrdersByRestaurantOwner" classname="com.food.delivery.facade.OrdersFacadeTest" time="5.309" displayname="testGetOrdersByRestaurantOwner()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.facade.OrdersFacadeTest]/[method:testGetOrdersByRestaurantOwner()]"/>
+    <testcase name="testGetOrderStatusByCustomer" classname="com.food.delivery.facade.OrdersFacadeTest" time="0.015" displayname="testGetOrderStatusByCustomer()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.facade.OrdersFacadeTest]/[method:testGetOrderStatusByCustomer()]"/>
+    <testcase name="testUpdateOrders" classname="com.food.delivery.facade.OrdersFacadeTest" time="0.03" displayname="testUpdateOrders()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.facade.OrdersFacadeTest]/[method:testUpdateOrders()]"/>
+    <testcase name="testAddOrders" classname="com.food.delivery.facade.OrdersFacadeTest" time="0.011" displayname="testAddOrders()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.facade.OrdersFacadeTest]/[method:testAddOrders()]"/>
+  </testsuite>
+</testrun>

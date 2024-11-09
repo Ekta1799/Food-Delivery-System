@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="SignUpRequestTest" project="food" tests="4" started="4" failures="0" errors="0" ignored="0">
+  <testsuite name="com.food.delivery.pojo.SignUpRequestTest" time="0.01" displayname="SignUpRequestTest" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.SignUpRequestTest]">
+    <testcase name="testGetAndSetPassword" classname="com.food.delivery.pojo.SignUpRequestTest" time="0.0" displayname="testGetAndSetPassword()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.SignUpRequestTest]/[method:testGetAndSetPassword()]"/>
+    <testcase name="testGetAndSetRole" classname="com.food.delivery.pojo.SignUpRequestTest" time="0.0" displayname="testGetAndSetRole()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.SignUpRequestTest]/[method:testGetAndSetRole()]"/>
+    <testcase name="testGetAndSetEmail" classname="com.food.delivery.pojo.SignUpRequestTest" time="0.006" displayname="testGetAndSetEmail()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.SignUpRequestTest]/[method:testGetAndSetEmail()]"/>
+    <testcase name="testGetAndSetUsername" classname="com.food.delivery.pojo.SignUpRequestTest" time="0.002" displayname="testGetAndSetUsername()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.SignUpRequestTest]/[method:testGetAndSetUsername()]"/>
+  </testsuite>
+</testrun>

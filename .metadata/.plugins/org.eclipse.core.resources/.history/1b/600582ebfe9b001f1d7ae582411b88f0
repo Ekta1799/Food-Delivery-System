@@ -1,0 +1,57 @@
+package com.food.delivery.facade;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.food.delivery.model.CustomerProfile;
+import com.food.delivery.pojo.CustomerProfileResource;
+import com.food.delivery.services.CustomerProfileService;
+
+@Component
+public class CustomerProfileFacade {
+
+	@Autowired
+	CustomerProfileService service;
+
+	public void addCustomerProfile(CustomerProfileResource customerResource) {
+
+		CustomerProfile customer = new CustomerProfile();
+
+		customer.setFirstName(customerResource.getFirstName());
+		customer.setLastName(customerResource.getLastName());
+		customer.setUsername(customerResource.getUsername());
+		customer.setAddress(customerResource.getAddress());
+		customer.setPhoneNo(customerResource.getPhoneNo());
+
+//		Long userId = userRepository.userByUsername(book.getUsername());
+//		bookModel.setUser_id(userId);
+//		logger.debug("user id = "+userId);
+
+		service.addCustomerProfile(customer);
+
+	}
+
+	public CustomerProfileResource getCustomerProfile(String firstName) {
+
+		CustomerProfile customerProfile = new CustomerProfile();
+
+		customerProfile = service.getCustomerProfile(firstName);
+
+		CustomerProfileResource customerProfileResource = convertDTOtoResource(customerProfile);
+
+		return customerProfileResource;
+
+	}
+
+	private CustomerProfileResource convertDTOtoResource(CustomerProfile customer) {
+		CustomerProfileResource customerProfileResource = new CustomerProfileResource();
+
+		customerProfileResource.setFirstName(customer.getFirstName());
+		customerProfileResource.setLastName(customer.getLastName());
+		customerProfileResource.setUsername(customer.getUsername());
+		customerProfileResource.setAddress(customer.getAddress());
+		customerProfileResource.setPhoneNo(customer.getPhoneNo());
+
+		return customerProfileResource;
+	}
+
+}

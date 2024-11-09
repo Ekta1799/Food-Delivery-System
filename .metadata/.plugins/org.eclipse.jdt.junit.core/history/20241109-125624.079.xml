@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="RestaurantProfileServiceImplTest" project="food" tests="2" started="2" failures="0" errors="1" ignored="0">
+  <testsuite name="com.food.delivery.services.RestaurantProfileServiceImplTest" time="2.82" displayname="RestaurantProfileServiceImplTest" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.services.RestaurantProfileServiceImplTest]">
+    <testcase name="testAddRestaurantProfile" classname="com.food.delivery.services.RestaurantProfileServiceImplTest" time="2.768" displayname="testAddRestaurantProfile()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.services.RestaurantProfileServiceImplTest]/[method:testAddRestaurantProfile()]">
+      <error>org.mockito.exceptions.base.MockitoException: 
+Only void methods can doNothing()!
+Example of correct use of doNothing():
+    doNothing().
+    doThrow(new RuntimeException())
+    .when(mock).someVoidMethod();
+Above means:
+someVoidMethod() does nothing the 1st time but throws an exception the 2nd time is called&#13;
+	at com.food.delivery.services.RestaurantProfileServiceImplTest.testAddRestaurantProfile(RestaurantProfileServiceImplTest.java:39)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="testGetRestaurantProfile" classname="com.food.delivery.services.RestaurantProfileServiceImplTest" time="0.052" displayname="testGetRestaurantProfile()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.services.RestaurantProfileServiceImplTest]/[method:testGetRestaurantProfile()]"/>
+  </testsuite>
+</testrun>

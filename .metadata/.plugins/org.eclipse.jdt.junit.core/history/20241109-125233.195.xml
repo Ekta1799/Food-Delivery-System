@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="MenuServiceImplTest" project="food" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="com.food.delivery.services.MenuServiceImplTest" time="2.745" displayname="MenuServiceImplTest" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.services.MenuServiceImplTest]">
+    <testcase name="testGetMenuByRestaurantId_withoutFilters" classname="com.food.delivery.services.MenuServiceImplTest" time="2.726" displayname="testGetMenuByRestaurantId_withoutFilters()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.services.MenuServiceImplTest]/[method:testGetMenuByRestaurantId_withoutFilters()]"/>
+    <testcase name="testAddMenu" classname="com.food.delivery.services.MenuServiceImplTest" time="0.006" displayname="testAddMenu()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.services.MenuServiceImplTest]/[method:testAddMenu()]"/>
+    <testcase name="testGetMenuByRestaurantId_withFilters" classname="com.food.delivery.services.MenuServiceImplTest" time="0.008" displayname="testGetMenuByRestaurantId_withFilters()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.services.MenuServiceImplTest]/[method:testGetMenuByRestaurantId_withFilters()]"/>
+  </testsuite>
+</testrun>

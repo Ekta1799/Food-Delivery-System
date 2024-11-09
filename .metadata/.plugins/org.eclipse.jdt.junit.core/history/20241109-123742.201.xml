@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="MessageResponseTest" project="food" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="com.food.delivery.pojo.MessageResponseTest" time="0.0" displayname="MessageResponseTest" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.MessageResponseTest]">
+    <testcase name="testSetMessage" classname="com.food.delivery.pojo.MessageResponseTest" time="0.0" displayname="testSetMessage()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.MessageResponseTest]/[method:testSetMessage()]"/>
+    <testcase name="testMessageResponseConstructor" classname="com.food.delivery.pojo.MessageResponseTest" time="0.0" displayname="testMessageResponseConstructor()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.MessageResponseTest]/[method:testMessageResponseConstructor()]"/>
+    <testcase name="testGetMessage" classname="com.food.delivery.pojo.MessageResponseTest" time="0.0" displayname="testGetMessage()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.MessageResponseTest]/[method:testGetMessage()]"/>
+  </testsuite>
+</testrun>

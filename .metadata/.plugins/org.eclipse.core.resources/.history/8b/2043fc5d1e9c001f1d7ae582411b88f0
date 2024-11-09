@@ -1,0 +1,47 @@
+package com.food.delivery.pojo;
+
+public class MenuResource {
+
+	private String food_item;
+
+	private double price;
+
+	private String cuisine;
+
+	private boolean veg;
+	
+	private String restaurant_name;
+
+	public String getFood_item() {
+		return food_item;
+	}
+
+	public void setFood_item(String food_item) {
+		this.food_item = food_item;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public String getCuisine() {
+		return cuisine;
+	}
+
+	public void setCuisine(String cuisine) {
+		this.cuisine = cuisine;
+	}
+
+	public boolean isVeg() {
+		return veg;
+	}
+
+	public void setVeg(boolean veg) {
+		this.veg = veg;
+	}
+
+}

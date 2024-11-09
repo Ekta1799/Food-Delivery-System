@@ -1,0 +1,15 @@
+spring.application.name=food
+
+server.port=8081
+
+spring.datasource.url=jdbc:postgresql://localhost:5432/postgres
+spring.datasource.username=postgres
+spring.datasource.password=1234
+spring.datasource.hikari.schema=food
+
+# Hibernate properties
+spring.jpa.database-platform = org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.show-sql = false
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.hibernate.naming.implicit-strategy = org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+spring.jpa.properties.hibernate.format_sql=true

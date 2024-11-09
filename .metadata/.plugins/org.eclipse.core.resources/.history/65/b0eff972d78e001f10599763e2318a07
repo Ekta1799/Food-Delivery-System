@@ -1,0 +1,5 @@
+package com.food.delivery.services;
+
+public class UserDetailsImpl {
+
+}

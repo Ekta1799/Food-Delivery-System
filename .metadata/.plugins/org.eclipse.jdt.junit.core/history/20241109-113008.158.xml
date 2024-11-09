@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="OrdersControllerTest" project="food" tests="5" started="5" failures="0" errors="0" ignored="0">
+  <testsuite name="com.food.delivery.controller.OrdersControllerTest" time="1.489" displayname="OrdersControllerTest" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.OrdersControllerTest]">
+    <testcase name="testUpdateOrderStatus_Failure" classname="com.food.delivery.controller.OrdersControllerTest" time="1.241" displayname="testUpdateOrderStatus_Failure()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.OrdersControllerTest]/[method:testUpdateOrderStatus_Failure()]"/>
+    <testcase name="testAddOrder_Success" classname="com.food.delivery.controller.OrdersControllerTest" time="0.098" displayname="testAddOrder_Success()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.OrdersControllerTest]/[method:testAddOrder_Success()]"/>
+    <testcase name="testGetOrders_NotFound" classname="com.food.delivery.controller.OrdersControllerTest" time="0.049" displayname="testGetOrders_NotFound()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.OrdersControllerTest]/[method:testGetOrders_NotFound()]"/>
+    <testcase name="testAddOrder_BadRequest" classname="com.food.delivery.controller.OrdersControllerTest" time="0.041" displayname="testAddOrder_BadRequest()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.OrdersControllerTest]/[method:testAddOrder_BadRequest()]"/>
+    <testcase name="testGetOrders_Success" classname="com.food.delivery.controller.OrdersControllerTest" time="0.029" displayname="testGetOrders_Success()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.OrdersControllerTest]/[method:testGetOrders_Success()]"/>
+  </testsuite>
+</testrun>

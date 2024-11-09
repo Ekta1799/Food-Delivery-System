@@ -1,0 +1,8 @@
+package com.food.delivery.services;
+
+import com.food.delivery.model.Orders;
+
+public interface OrdersService {
+
+	public void addOrders(Orders orders);
+}

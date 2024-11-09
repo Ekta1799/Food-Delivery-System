@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="RestaurantProfileFacadeTest" project="food" tests="5" started="5" failures="0" errors="0" ignored="0">
+  <testsuite name="com.food.delivery.facade.RestaurantProfileFacadeTest" time="2.811" displayname="RestaurantProfileFacadeTest" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.facade.RestaurantProfileFacadeTest]">
+    <testcase name="testUpdateRestaurantProfile" classname="com.food.delivery.facade.RestaurantProfileFacadeTest" time="2.751" displayname="testUpdateRestaurantProfile()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.facade.RestaurantProfileFacadeTest]/[method:testUpdateRestaurantProfile()]"/>
+    <testcase name="testAddMenu" classname="com.food.delivery.facade.RestaurantProfileFacadeTest" time="0.018" displayname="testAddMenu()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.facade.RestaurantProfileFacadeTest]/[method:testAddMenu()]"/>
+    <testcase name="testAddRestaurantProfile" classname="com.food.delivery.facade.RestaurantProfileFacadeTest" time="0.014" displayname="testAddRestaurantProfile()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.facade.RestaurantProfileFacadeTest]/[method:testAddRestaurantProfile()]"/>
+    <testcase name="testGetRestaurantList" classname="com.food.delivery.facade.RestaurantProfileFacadeTest" time="0.015" displayname="testGetRestaurantList()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.facade.RestaurantProfileFacadeTest]/[method:testGetRestaurantList()]"/>
+    <testcase name="testGetRestaurantProfile" classname="com.food.delivery.facade.RestaurantProfileFacadeTest" time="0.009" displayname="testGetRestaurantProfile()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.facade.RestaurantProfileFacadeTest]/[method:testGetRestaurantProfile()]"/>
+  </testsuite>
+</testrun>

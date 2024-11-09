@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="RestaurantControllerTest" project="food" tests="9" started="9" failures="1" errors="0" ignored="0">
+  <testsuite name="com.food.delivery.controller.RestaurantControllerTest" time="1.973" displayname="RestaurantControllerTest" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.RestaurantControllerTest]">
+    <testcase name="testAddMenuByRestaurantName_EmptyFields" classname="com.food.delivery.controller.RestaurantControllerTest" time="1.655" displayname="testAddMenuByRestaurantName_EmptyFields()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.RestaurantControllerTest]/[method:testAddMenuByRestaurantName_EmptyFields()]"/>
+    <testcase name="testAddRestaurantOwnerProfile_EmptyRequest" classname="com.food.delivery.controller.RestaurantControllerTest" time="0.055" displayname="testAddRestaurantOwnerProfile_EmptyRequest()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.RestaurantControllerTest]/[method:testAddRestaurantOwnerProfile_EmptyRequest()]">
+      <failure>java.lang.AssertionError: Status expected:&lt;400&gt; but was:&lt;200&gt;&#13;
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:59)&#13;
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:122)&#13;
+	at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$9(StatusResultMatchers.java:637)&#13;
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:214)&#13;
+	at com.food.delivery.controller.RestaurantControllerTest.testAddRestaurantOwnerProfile_EmptyRequest(RestaurantControllerTest.java:57)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</failure>
+    </testcase>
+    <testcase name="testAddRestaurantOwnerProfile_Success" classname="com.food.delivery.controller.RestaurantControllerTest" time="0.036" displayname="testAddRestaurantOwnerProfile_Success()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.RestaurantControllerTest]/[method:testAddRestaurantOwnerProfile_Success()]"/>
+    <testcase name="testAddMenuByRestaurantName_Success" classname="com.food.delivery.controller.RestaurantControllerTest" time="0.044" displayname="testAddMenuByRestaurantName_Success()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.RestaurantControllerTest]/[method:testAddMenuByRestaurantName_Success()]"/>
+    <testcase name="testUpdateRestaurantProfile_Success" classname="com.food.delivery.controller.RestaurantControllerTest" time="0.028" displayname="testUpdateRestaurantProfile_Success()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.RestaurantControllerTest]/[method:testUpdateRestaurantProfile_Success()]"/>
+    <testcase name="testAddMenuByRestaurantName_Failure" classname="com.food.delivery.controller.RestaurantControllerTest" time="0.023" displayname="testAddMenuByRestaurantName_Failure()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.RestaurantControllerTest]/[method:testAddMenuByRestaurantName_Failure()]"/>
+    <testcase name="testGetRestaurantProfiles_Success" classname="com.food.delivery.controller.RestaurantControllerTest" time="0.038" displayname="testGetRestaurantProfiles_Success()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.RestaurantControllerTest]/[method:testGetRestaurantProfiles_Success()]"/>
+    <testcase name="testGetRestaurantProfiles_NotFound" classname="com.food.delivery.controller.RestaurantControllerTest" time="0.03" displayname="testGetRestaurantProfiles_NotFound()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.RestaurantControllerTest]/[method:testGetRestaurantProfiles_NotFound()]"/>
+    <testcase name="testUpdateRestaurantProfile_Failure" classname="com.food.delivery.controller.RestaurantControllerTest" time="0.023" displayname="testUpdateRestaurantProfile_Failure()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.RestaurantControllerTest]/[method:testUpdateRestaurantProfile_Failure()]"/>
+  </testsuite>
+</testrun>

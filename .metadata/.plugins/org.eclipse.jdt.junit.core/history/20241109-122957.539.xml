@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="RoleTest" project="food" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="com.food.delivery.model.RoleTest" time="0.014" displayname="RoleTest" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.RoleTest]">
+    <testcase name="testRoleConstructor" classname="com.food.delivery.model.RoleTest" time="0.002" displayname="testRoleConstructor()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.RoleTest]/[method:testRoleConstructor()]"/>
+    <testcase name="testSetAndGetName" classname="com.food.delivery.model.RoleTest" time="0.008" displayname="testSetAndGetName()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.RoleTest]/[method:testSetAndGetName()]"/>
+    <testcase name="testSetAndGetId" classname="com.food.delivery.model.RoleTest" time="0.001" displayname="testSetAndGetId()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.RoleTest]/[method:testSetAndGetId()]"/>
+  </testsuite>
+</testrun>

@@ -1,0 +1,113 @@
+package com.food.delivery.services;
+
+import static org.mockito.Mockito.*;
+
+import com.food.delivery.model.Orders;
+import com.food.delivery.repository.OrdersRepository;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.*;
+
+import static org.junit.jupiter.api.Assertions.*;
+import java.util.List;
+import java.util.Arrays;
+
+class OrdersServiceImplTest {
+
+    @Mock
+    private OrdersRepository ordersRepo;
+
+    @InjectMocks
+    private OrdersServiceImpl ordersService;
+
+    private Orders order;
+
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
+        order = new Orders();
+        order.setCustomer_id(1L);
+        order.setRestaurant_id(1L);
+        order.setFood_id(1L);
+        order.setStatus("Pending");
+    }
+
+    @Test
+    void testAddOrders() {
+
+        ordersService.addOrders(order);
+
+        // Assert
+        verify(ordersRepo, times(1)).save(order);
+    }
+
+    @Test
+    void testUpdateStatus() {
+        // Arrange
+        Long customerId = 1L;
+        Long restaurantId = 1L;
+        Long foodId = 1L;
+        String status = "Completed";
+
+        // Act
+        ordersService.updateStatus(customerId, restaurantId, foodId, status);
+
+        // Assert
+        verify(ordersRepo, times(1)).updateStatus(customerId, restaurantId, foodId, status);
+    }
+
+    @Test
+    void testGetOrdersByRestaurantOwner() {
+        // Arrange
+        Long restaurantId = 1L;
+        List<Orders> ordersList = Arrays.asList(order);
+
+        // Mock the repository method
+        when(ordersRepo.getOrdersByRestaurantId(restaurantId)).thenReturn(ordersList);
+
+        // Act
+        List<Orders> result = ordersService.getOrdersByRestaurantOwner(restaurantId);
+
+        // Assert
+        assertNotNull(result);
+        assertEquals(1, result.size());
+        verify(ordersRepo, times(1)).getOrdersByRestaurantId(restaurantId);
+    }
+
+    @Test
+    void testGetOrderStatusByCustomer_withStatus() {
+        // Arrange
+        Long customerId = 1L;
+        String status = "Pending";
+        List<Orders> ordersList = Arrays.asList(order);
+
+        // Mock the repository method
+        when(ordersRepo.getOrderByCustomerBasedOnStatus(customerId, status)).thenReturn(ordersList);
+
+        // Act
+        List<Orders> result = ordersService.getOrderStatusByCustomer(customerId, status);
+
+        // Assert
+        assertNotNull(result);
+        assertEquals(1, result.size());
+        verify(ordersRepo, times(1)).getOrderByCustomerBasedOnStatus(customerId, status);
+    }
+
+    @Test
+    void testGetOrderStatusByCustomer_withoutStatus() {
+        // Arrange
+        Long customerId = 1L;
+        List<Orders> ordersList = Arrays.asList(order);
+
+        // Mock the repository method
+        when(ordersRepo.getOrderByCustomer(customerId)).thenReturn(ordersList);
+
+        // Act
+        List<Orders> result = ordersService.getOrderStatusByCustomer(customerId, null);
+
+        // Assert
+        assertNotNull(result);
+        assertEquals(1, result.size());
+        verify(ordersRepo, times(1)).getOrderByCustomer(customerId);
+    }
+}

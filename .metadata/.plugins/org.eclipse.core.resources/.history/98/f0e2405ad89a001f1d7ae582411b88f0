@@ -1,0 +1,24 @@
+package com.food.delivery.facade;
+
+public class CustomerProfileFacade {
+	
+	
+	public void addCustomerProfile(BooksResource book) {
+
+		Books bookModel = new Books();
+		
+		bookModel.setTitle(book.getTitle());
+		bookModel.setAuthor(book.getAuthor());
+		bookModel.setGenre(book.getGenre());
+		bookModel.setAvailability(book.isAvailability());
+		bookModel.setCondition_status(book.getCondition());
+		
+		Long userId = userRepository.userByUsername(book.getUsername());
+		bookModel.setUser_id(userId);
+		logger.debug("user id = "+userId);
+		
+		service.createBooks(bookModel);
+
+	}
+
+}

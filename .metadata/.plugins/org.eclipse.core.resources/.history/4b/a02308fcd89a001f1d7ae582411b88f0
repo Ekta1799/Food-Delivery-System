@@ -1,0 +1,11 @@
+package com.food.delivery.services;
+
+import com.food.delivery.model.CustomerProfile;
+
+public class CustomerProfileServiceImpl implements CustomerProfileService {
+	
+	public void addCustomerProfile(CustomerProfile customer) {
+		bookRepository.save(customer);
+	}
+
+}

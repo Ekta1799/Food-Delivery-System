@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="OrdersServiceImplTest" project="food" tests="5" started="5" failures="0" errors="0" ignored="0">
+  <testsuite name="com.food.delivery.services.OrdersServiceImplTest" time="2.495" displayname="OrdersServiceImplTest" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.services.OrdersServiceImplTest]">
+    <testcase name="testGetOrdersByRestaurantOwner" classname="com.food.delivery.services.OrdersServiceImplTest" time="2.452" displayname="testGetOrdersByRestaurantOwner()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.services.OrdersServiceImplTest]/[method:testGetOrdersByRestaurantOwner()]"/>
+    <testcase name="testGetOrderStatusByCustomer_withoutStatus" classname="com.food.delivery.services.OrdersServiceImplTest" time="0.008" displayname="testGetOrderStatusByCustomer_withoutStatus()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.services.OrdersServiceImplTest]/[method:testGetOrderStatusByCustomer_withoutStatus()]"/>
+    <testcase name="testUpdateStatus" classname="com.food.delivery.services.OrdersServiceImplTest" time="0.009" displayname="testUpdateStatus()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.services.OrdersServiceImplTest]/[method:testUpdateStatus()]"/>
+    <testcase name="testGetOrderStatusByCustomer_withStatus" classname="com.food.delivery.services.OrdersServiceImplTest" time="0.011" displayname="testGetOrderStatusByCustomer_withStatus()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.services.OrdersServiceImplTest]/[method:testGetOrderStatusByCustomer_withStatus()]"/>
+    <testcase name="testAddOrders" classname="com.food.delivery.services.OrdersServiceImplTest" time="0.007" displayname="testAddOrders()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.services.OrdersServiceImplTest]/[method:testAddOrders()]"/>
+  </testsuite>
+</testrun>

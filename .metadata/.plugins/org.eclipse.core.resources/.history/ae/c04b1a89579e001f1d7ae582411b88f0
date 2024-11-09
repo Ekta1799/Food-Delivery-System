@@ -1,0 +1,12 @@
+package com.food.delivery.services;
+
+import com.food.delivery.model.Orders;
+
+public interface OrdersService {
+
+	public void addOrders(Orders orders);
+	
+	public void updateStatus(Long customer_id, Long restaurant_id, Long food_id, String status);
+	
+	public List<Orders> getOrdersByRestaurantOwner(Long restaurant_id);
+}

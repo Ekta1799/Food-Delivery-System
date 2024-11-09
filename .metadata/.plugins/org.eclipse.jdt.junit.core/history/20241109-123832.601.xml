@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="OrdersResourceTest" project="food" tests="5" started="5" failures="0" errors="0" ignored="0">
+  <testsuite name="com.food.delivery.pojo.OrdersResourceTest" time="0.032" displayname="OrdersResourceTest" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.OrdersResourceTest]">
+    <testcase name="testGetAndSetFoodPrice" classname="com.food.delivery.pojo.OrdersResourceTest" time="0.009" displayname="testGetAndSetFoodPrice()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.OrdersResourceTest]/[method:testGetAndSetFoodPrice()]"/>
+    <testcase name="testGetAndSetRestaurantName" classname="com.food.delivery.pojo.OrdersResourceTest" time="0.002" displayname="testGetAndSetRestaurantName()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.OrdersResourceTest]/[method:testGetAndSetRestaurantName()]"/>
+    <testcase name="testGetAndSetStatus" classname="com.food.delivery.pojo.OrdersResourceTest" time="0.001" displayname="testGetAndSetStatus()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.OrdersResourceTest]/[method:testGetAndSetStatus()]"/>
+    <testcase name="testGetAndSetUsername" classname="com.food.delivery.pojo.OrdersResourceTest" time="0.003" displayname="testGetAndSetUsername()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.OrdersResourceTest]/[method:testGetAndSetUsername()]"/>
+    <testcase name="testGetAndSetFoodName" classname="com.food.delivery.pojo.OrdersResourceTest" time="0.004" displayname="testGetAndSetFoodName()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.pojo.OrdersResourceTest]/[method:testGetAndSetFoodName()]"/>
+  </testsuite>
+</testrun>

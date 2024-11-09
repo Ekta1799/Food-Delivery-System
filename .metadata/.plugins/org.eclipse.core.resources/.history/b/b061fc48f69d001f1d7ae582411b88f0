@@ -1,0 +1,15 @@
+package com.food.delivery.pojo;
+
+public class OrdersResource {
+	
+	private Long restaurantName;
+
+	private Long food_id;
+
+	private double food_price;
+
+	private String customer_id;
+
+	private String status;
+
+}

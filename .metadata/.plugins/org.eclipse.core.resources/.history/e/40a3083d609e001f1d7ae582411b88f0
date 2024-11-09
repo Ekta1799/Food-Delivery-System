@@ -1,0 +1,112 @@
+package com.food.delivery.configuration;
+
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import com.food.delivery.jwt.AuthEntryPointJwt;
+import com.food.delivery.jwt.AuthTokenFilter;
+import com.food.delivery.services.UserDetailsServiceImpl;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Import;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
+
+@SpringBootTest
+@EnableWebSecurity
+@Import(WebSecurityConfig.class)
+class WebSecurityConfigTest {
+
+    @Autowired
+    private WebApplicationContext webApplicationContext;
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private UserDetailsServiceImpl userDetailsService;
+
+    @MockBean
+    private AuthEntryPointJwt unauthorizedHandler;
+
+    @MockBean
+    private AuthTokenFilter authTokenFilter;
+
+    @Mock
+    private AuthenticationManager authenticationManager;
+
+    @InjectMocks
+    private WebSecurityConfig webSecurityConfig;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @BeforeEach
+    public void setup() {
+        MockitoAnnotations.openMocks(this);
+        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+    }
+
+    @Test
+    void testPublicEndpointsAccessible() throws Exception {
+        mockMvc.perform(get("/food/someEndpoint"))
+                .andExpect(status().isOk());
+
+        mockMvc.perform(get("/api/test/anotherEndpoint"))
+                .andExpect(status().isOk());
+
+        mockMvc.perform(get("/customerProfile"))
+                .andExpect(status().isOk());
+
+        mockMvc.perform(get("/restaurantProfile"))
+                .andExpect(status().isOk());
+
+        mockMvc.perform(get("/menu"))
+                .andExpect(status().isOk());
+
+        mockMvc.perform(get("/restaurants"))
+                .andExpect(status().isOk());
+
+        mockMvc.perform(get("/orders"))
+                .andExpect(status().isOk());
+
+        mockMvc.perform(get("/userProfile"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    void testRestrictedEndpointRequiresAuthentication() throws Exception {
+        mockMvc.perform(get("/admin/secureEndpoint"))
+                .andExpect(status().isForbidden());
+    }
+
+    @Test
+    void testAuthenticationProvider() {
+        var authProvider = webSecurityConfig.authenticationProvider();
+        authProvider.setUserDetailsService(userDetailsService);
+        authProvider.setPasswordEncoder(passwordEncoder);
+
+        assert authProvider.getUserDetailsService().equals(userDetailsService);
+        assert authProvider.getPasswordEncoder() instanceof PasswordEncoder;
+    }
+
+    @Test
+    void testPasswordEncoder() {
+        PasswordEncoder encoder = webSecurityConfig.passwordEncoder();
+        String rawPassword = "password";
+        String encodedPassword = encoder.encode(rawPassword);
+        assert encoder.matches(rawPassword, encodedPassword);
+    }
+}

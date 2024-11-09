@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="UserTest" project="food" tests="7" started="7" failures="0" errors="0" ignored="0">
+  <testsuite name="com.food.delivery.model.UserTest" time="2.513" displayname="UserTest" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.UserTest]">
+    <testcase name="testAddMultipleRoles" classname="com.food.delivery.model.UserTest" time="2.469" displayname="testAddMultipleRoles()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.UserTest]/[method:testAddMultipleRoles()]"/>
+    <testcase name="testUserRoleAssociation" classname="com.food.delivery.model.UserTest" time="0.006" displayname="testUserRoleAssociation()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.UserTest]/[method:testUserRoleAssociation()]"/>
+    <testcase name="testUsernameFormat" classname="com.food.delivery.model.UserTest" time="0.005" displayname="testUsernameFormat()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.UserTest]/[method:testUsernameFormat()]"/>
+    <testcase name="testEmailFormat" classname="com.food.delivery.model.UserTest" time="0.006" displayname="testEmailFormat()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.UserTest]/[method:testEmailFormat()]"/>
+    <testcase name="testAddAndRemoveRole" classname="com.food.delivery.model.UserTest" time="0.005" displayname="testAddAndRemoveRole()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.UserTest]/[method:testAddAndRemoveRole()]"/>
+    <testcase name="testGetUserId" classname="com.food.delivery.model.UserTest" time="0.006" displayname="testGetUserId()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.UserTest]/[method:testGetUserId()]"/>
+    <testcase name="testUserCreation" classname="com.food.delivery.model.UserTest" time="0.005" displayname="testUserCreation()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.model.UserTest]/[method:testUserCreation()]"/>
+  </testsuite>
+</testrun>

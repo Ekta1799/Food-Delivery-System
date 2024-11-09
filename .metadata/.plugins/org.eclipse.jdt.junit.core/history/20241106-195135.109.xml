@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="AuthControllerTest" project="food" tests="3" started="3" failures="0" errors="1" ignored="0">
+  <testsuite name="com.food.delivery.controller.AuthControllerTest" time="1.389" displayname="AuthControllerTest" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.AuthControllerTest]">
+    <testcase name="testRegisterUser_SuccessfulRegistration" classname="com.food.delivery.controller.AuthControllerTest" time="1.138" displayname="testRegisterUser_SuccessfulRegistration()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.AuthControllerTest]/[method:testRegisterUser_SuccessfulRegistration()]">
+      <error>jakarta.servlet.ServletException: Request processing failed: java.lang.NullPointerException: Cannot invoke "com.food.delivery.repository.CustomerProfileRepository.save(Object)" because "this.customerProfileRepo" is null&#13;
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1022)&#13;
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)&#13;
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)&#13;
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)&#13;
+	at org.springframework.test.web.servlet.TestDispatcherServlet.service(TestDispatcherServlet.java:72)&#13;
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)&#13;
+	at org.springframework.mock.web.MockFilterChain$ServletFilterProxy.doFilter(MockFilterChain.java:165)&#13;
+	at org.springframework.mock.web.MockFilterChain.doFilter(MockFilterChain.java:132)&#13;
+	at org.springframework.test.web.servlet.MockMvc.perform(MockMvc.java:201)&#13;
+	at com.food.delivery.controller.AuthControllerTest.testRegisterUser_SuccessfulRegistration(AuthControllerTest.java:93)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+Caused by: java.lang.NullPointerException: Cannot invoke "com.food.delivery.repository.CustomerProfileRepository.save(Object)" because "this.customerProfileRepo" is null&#13;
+	at com.food.delivery.controller.AuthController.registerUser(AuthController.java:147)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)&#13;
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)&#13;
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)&#13;
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)&#13;
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)&#13;
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)&#13;
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)&#13;
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)&#13;
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)&#13;
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)&#13;
+	... 12 more&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="testRegisterUser_EmailExists" classname="com.food.delivery.controller.AuthControllerTest" time="0.209" displayname="testRegisterUser_EmailExists()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.AuthControllerTest]/[method:testRegisterUser_EmailExists()]"/>
+    <testcase name="testRegisterUser_UsernameExists" classname="com.food.delivery.controller.AuthControllerTest" time="0.026" displayname="testRegisterUser_UsernameExists()" uniqueid="[engine:junit-jupiter]/[class:com.food.delivery.controller.AuthControllerTest]/[method:testRegisterUser_UsernameExists()]"/>
+  </testsuite>
+</testrun>
