@@ -27,6 +27,9 @@ public interface RestaurantProfileRepository extends JpaRepository<RestaurantOwn
 
 	@Query("Select r from RestaurantOwnerProfile r WHERE r.firstname = :firstname")
 	RestaurantOwnerProfile getRestaurantProfile(@Param("firstname") String firstname);
+	
+	@Query("Select r from RestaurantOwnerProfile r WHERE r.id = :id")
+	RestaurantOwnerProfile getRestaurantProfileById(@Param("id") Long id);
 
 	@Query("Select r.restaurant_name from RestaurantOwnerProfile r")
 	List<String> findAllRestaurants();

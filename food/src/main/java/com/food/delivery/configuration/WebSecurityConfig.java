@@ -68,7 +68,7 @@ public class WebSecurityConfig {
 						.requestMatchers("/menu").permitAll()
 						.requestMatchers("/restaurants").permitAll()
 						.requestMatchers("/orders").permitAll()
-						.requestMatchers("/userProfile").permitAll().anyRequest().authenticated());
+						.requestMatchers("/popularRestaurant").permitAll().anyRequest().authenticated());
 
 		http.authenticationProvider(authenticationProvider());
 

@@ -23,10 +23,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.food.delivery.facade.OrdersFacade;
 import com.food.delivery.model.Menu;
+import com.food.delivery.model.RestaurantOwnerProfile;
 import com.food.delivery.model.Status;
 import com.food.delivery.pojo.MessageResponse;
 import com.food.delivery.pojo.OrdersResource;
 import com.food.delivery.repository.MenuRepository;
+import com.food.delivery.repository.OrdersRepository;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -40,6 +42,9 @@ public class OrderController {
 
 	@Autowired
 	MenuRepository menuRepo;
+
+	@Autowired
+	OrdersRepository ordersRepo;
 
 	// POST
 	@CrossOrigin(origins = "*", exposedHeaders = "**")
@@ -75,8 +80,8 @@ public class OrderController {
 			return ResponseEntity.badRequest()
 					.body(new MessageResponse("Bad Request: Please provide valid food item!"));
 		}
-		
-		if(menu.getPrice() != ordersResource.getFood_price()) {
+
+		if (menu.getPrice() != ordersResource.getFood_price()) {
 			return ResponseEntity.badRequest()
 					.body(new MessageResponse("Bad Request: The food price entered is wrong!"));
 		}
@@ -84,8 +89,7 @@ public class OrderController {
 		try {
 			ordersFacade.addOrders(ordersResource);
 		} catch (Exception e) {
-			return ResponseEntity.internalServerError()
-					.body(new MessageResponse("Error: Order could be added!"));
+			return ResponseEntity.internalServerError().body(new MessageResponse("Error: Order could be added!"));
 		}
 
 		return ResponseEntity.ok(new MessageResponse("Orders added successfully!"));
@@ -171,16 +175,16 @@ public class OrderController {
 			return ResponseEntity.badRequest()
 					.body(new MessageResponse("Please provide all order details to update the status."));
 		}
-		
+
 		// Check if the status is "cancelling" or "rescheduling" and restrict to admin
-	    if ("cancelling".equalsIgnoreCase(orders.getStatus()) || "rescheduling".equalsIgnoreCase(orders.getStatus())) {
-	        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-	        if (authentication == null || !authentication.getAuthorities().stream()
-	                .anyMatch(authority -> authority.getAuthority().equals("ROLE_ADMIN"))) {
-	            return ResponseEntity.status(HttpStatus.FORBIDDEN)
-	                    .body(new MessageResponse("Only admins can update the status to cancelling or rescheduling."));
-	        }
-	    }
+		if ("cancelling".equalsIgnoreCase(orders.getStatus()) || "rescheduling".equalsIgnoreCase(orders.getStatus())) {
+			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+			if (authentication == null || !authentication.getAuthorities().stream()
+					.anyMatch(authority -> authority.getAuthority().equals("ROLE_ADMIN"))) {
+				return ResponseEntity.status(HttpStatus.FORBIDDEN)
+						.body(new MessageResponse("Only admins can update the status to cancelling or rescheduling."));
+			}
+		}
 
 		if (Status.valueOf(orders.getStatus().toUpperCase()) == null) {
 			return ResponseEntity.badRequest().body(new MessageResponse("Please provide a valid status."));
@@ -193,7 +197,24 @@ public class OrderController {
 
 		return ResponseEntity.ok(new MessageResponse("Order status updated successfully!"));
 	}
-	
-	
+
+	// Get most popular restaurant
+	@CrossOrigin(origins = "*", exposedHeaders = "**")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@GetMapping(value = "/popularRestaurant", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<?> getMostPopularRestaurant(HttpServletRequest request) {
+
+		logger.info("Get most poplar restaurant");
+
+		RestaurantOwnerProfile restaurant = new RestaurantOwnerProfile();
+		try {
+			restaurant = ordersFacade.findMostPopularRestaurant();
+		} catch (Exception e) {
+			return ResponseEntity.internalServerError()
+					.body(new MessageResponse("Error: Could not retireve popular restaurant!"));
+		}
+
+		return ResponseEntity.ok(restaurant);
+	}
 
 }

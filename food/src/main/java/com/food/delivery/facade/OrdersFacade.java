@@ -10,9 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.food.delivery.model.Orders;
+import com.food.delivery.model.RestaurantOwnerProfile;
 import com.food.delivery.model.User;
 import com.food.delivery.pojo.OrdersResource;
 import com.food.delivery.repository.MenuRepository;
+import com.food.delivery.repository.OrdersRepository;
 import com.food.delivery.repository.RestaurantProfileRepository;
 import com.food.delivery.repository.UserRepository;
 import com.food.delivery.services.OrdersService;
@@ -33,6 +35,9 @@ public class OrdersFacade {
 
 	@Autowired
 	OrdersService ordersService;
+
+	@Autowired
+	OrdersRepository ordersRepo;
 
 	public void addOrders(OrdersResource orders) {
 
@@ -100,7 +105,7 @@ public class OrdersFacade {
 			orders.setFood_price(order.getFood_price());
 			orders.setStatus(order.getStatus());
 			orders.setNoOfItems(order.getNo_of_items());
-			
+
 			ordersList.add(orders);
 		}
 
@@ -139,6 +144,20 @@ public class OrdersFacade {
 
 		return ordersList;
 
+	}
+
+	public RestaurantOwnerProfile findMostPopularRestaurant() {
+
+		RestaurantOwnerProfile restaurant = new RestaurantOwnerProfile();
+		try {
+			Long restaurantId = ordersRepo.findMostPopularRestaurant();
+
+			restaurant = restaurantProfileRepo.getRestaurantProfileById(restaurantId);
+		} catch (Exception e) {
+			throw e;
+		}
+
+		return restaurant;
 	}
 
 }

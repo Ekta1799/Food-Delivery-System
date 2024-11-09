@@ -29,4 +29,7 @@ public interface OrdersRepository extends JpaRepository<Orders, Long> {
 	@Modifying
 	@Query(value = "UPDATE orders SET status = ?4 WHERE customer_id = ?1 AND restaurant_id = ?2 AND food_id = ?3 ", nativeQuery = true)
 	void updateStatus(Long customer_id, Long restaurant_id, Long food_id, String status);
+	
+	@Query("SELECT o.restaurant_id FROM Orders o GROUP BY o.restaurant_id ORDER BY COUNT(o) DESC")
+	Long findMostPopularRestaurant();
 }
