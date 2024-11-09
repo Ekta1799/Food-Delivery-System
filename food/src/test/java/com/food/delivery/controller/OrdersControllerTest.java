@@ -21,7 +21,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.food.delivery.facade.OrdersFacade;
 import com.food.delivery.facade.RestaurantProfileFacade;
-import com.food.delivery.pojo.MenuResource;
 import com.food.delivery.pojo.OrdersResource;
 
 @ExtendWith(SpringExtension.class)

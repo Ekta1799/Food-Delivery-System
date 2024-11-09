@@ -49,7 +49,11 @@ public class CustomerProfileFacade {
 
 		CustomerProfile customerProfile = new CustomerProfile();
 
-		customerProfile = service.getCustomerProfile(firstName);
+		try {
+			customerProfile = service.getCustomerProfile(firstName);
+		} catch (Exception e) {
+			throw e;
+		}
 
 		CustomerProfileResource customerProfileResource = convertDTOtoResource(customerProfile);
 
@@ -105,32 +109,32 @@ public class CustomerProfileFacade {
 		return true;
 	}
 	
-	public boolean deleteCustomerProfile(String username) {
-		Optional<User> userData = userRepository.findByUsername(username);
-		User userVal = userData.get();
-		
-		if (customerProfileRepo.existsByUserId(userVal.getId())) {
-
-			Optional<CustomerProfile> customer = customerProfileRepo.findByUsername(username);
-			CustomerProfile customer1 = customer.get();
-			
-			try {
-				
-				customerProfileRepo.deleteCustomerProfile(customer1.getId());
-				
-				userRepository.deleteUser(customer1.getId());
-			} catch (Exception e) {
-				logger.error("Could not update user profile : {}", e);
-				return false;
-			}
-
-		} else {
-			logger.error("User profile does not exist for user ID: " + userVal.getId());
-			return false;
-		}
-		
-		return true;
-		
-	}
+//	public boolean deleteCustomerProfile(String username) {
+//		Optional<User> userData = userRepository.findByUsername(username);
+//		User userVal = userData.get();
+//		
+//		if (customerProfileRepo.existsByUserId(userVal.getId())) {
+//
+//			Optional<CustomerProfile> customer = customerProfileRepo.findByUsername(username);
+//			CustomerProfile customer1 = customer.get();
+//			
+//			try {
+//				
+//				customerProfileRepo.deleteCustomerProfile(customer1.getId());
+//				
+//				userRepository.deleteUser(customer1.getId());
+//			} catch (Exception e) {
+//				logger.error("Could not update user profile : {}", e);
+//				return false;
+//			}
+//
+//		} else {
+//			logger.error("User profile does not exist for user ID: " + userVal.getId());
+//			return false;
+//		}
+//		
+//		return true;
+//		
+//	}
 
 }

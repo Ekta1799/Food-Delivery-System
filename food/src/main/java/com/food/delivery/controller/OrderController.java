@@ -53,12 +53,12 @@ public class OrderController {
 			return ResponseEntity.badRequest().body(new MessageResponse("Empty orders resource!"));
 		}
 
-		if (ordersResource.getUsername().isEmpty()) {
+		if (ordersResource.getUsername() == null) {
 			return ResponseEntity.badRequest()
 					.body(new MessageResponse("Bad Request: Please provide customer's username!"));
 		}
 
-		if (ordersResource.getRestaurantName().isEmpty()) {
+		if (ordersResource.getRestaurantName() == null) {
 			return ResponseEntity.badRequest()
 					.body(new MessageResponse("Bad Request: Please provide restaurant name!"));
 		}
@@ -68,19 +68,25 @@ public class OrderController {
 					.body(new MessageResponse("Bad Request: Please provide valid food price!"));
 		}
 
-		Menu menu = menuRepo.getMenuFromFoodName(ordersResource.getFoodName());
-		
-		if(menu == null) {
+		Menu menu = new Menu();
+		try {
+			menu = menuRepo.getMenuFromFoodName(ordersResource.getFoodName());
+		} catch (Exception e) {
 			return ResponseEntity.badRequest()
 					.body(new MessageResponse("Bad Request: Please provide valid food item!"));
 		}
 		
 		if(menu.getPrice() != ordersResource.getFood_price()) {
 			return ResponseEntity.badRequest()
-					.body(new MessageResponse("Bad Request: Th food price entered is wrong!"));
+					.body(new MessageResponse("Bad Request: The food price entered is wrong!"));
 		}
 
-		ordersFacade.addOrders(ordersResource);
+		try {
+			ordersFacade.addOrders(ordersResource);
+		} catch (Exception e) {
+			return ResponseEntity.internalServerError()
+					.body(new MessageResponse("Error: Order could be added!"));
+		}
 
 		return ResponseEntity.ok(new MessageResponse("Orders added successfully!"));
 	}
@@ -160,8 +166,8 @@ public class OrderController {
 			return ResponseEntity.badRequest().body(new MessageResponse("Please provide order details."));
 		}
 
-		if (orders.getStatus().isEmpty() || orders.getUsername().isEmpty() || orders.getRestaurantName().isEmpty()
-				|| orders.getFoodName().isEmpty()) {
+		if (orders.getStatus() == null || orders.getUsername() == null || orders.getRestaurantName() == null
+				|| orders.getFoodName() == null) {
 			return ResponseEntity.badRequest()
 					.body(new MessageResponse("Please provide all order details to update the status."));
 		}
@@ -182,10 +188,12 @@ public class OrderController {
 
 		boolean response = ordersFacade.updateOrders(orders);
 		if (!response) {
-			return ResponseEntity.badRequest().body(new MessageResponse("Error: User profile could not be updated!"));
+			return ResponseEntity.badRequest().body(new MessageResponse("Error: Order status could not be updated!"));
 		}
 
-		return ResponseEntity.ok(new MessageResponse("User Profile Updated successfully!"));
+		return ResponseEntity.ok(new MessageResponse("Order status updated successfully!"));
 	}
+	
+	
 
 }

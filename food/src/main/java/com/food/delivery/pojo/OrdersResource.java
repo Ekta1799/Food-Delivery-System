@@ -12,13 +12,13 @@ public class OrdersResource {
 
 	private String status;
 
-	private int noOfItems;
+	private Integer noOfItems;
 
-	public int getNoOfItems() {
+	public Integer getNoOfItems() {
 		return noOfItems;
 	}
 
-	public void setNoOfItems(int noOfItems) {
+	public void setNoOfItems(Integer noOfItems) {
 		this.noOfItems = noOfItems;
 	}
 

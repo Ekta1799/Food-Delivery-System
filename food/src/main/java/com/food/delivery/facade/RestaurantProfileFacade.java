@@ -59,7 +59,11 @@ public class RestaurantProfileFacade {
 
 		RestaurantOwnerProfile restaurantProfile = new RestaurantOwnerProfile();
 
-		restaurantProfile = service.getRestaurantProfile(firstName);
+		try {
+			restaurantProfile = service.getRestaurantProfile(firstName);
+		} catch (Exception e) {
+			throw e;
+		}
 
 		RestaurantProfileResource restaurantProfileResource = convertDTOtoResource(restaurantProfile);
 
@@ -150,17 +154,19 @@ public class RestaurantProfileFacade {
 			menu.setVeg(menuRes.isVeg());
 
 			menu.setRestaurant_id(null);
-
-			Long restuarantId = restaurantProfileRepo.getRestaurantIdByRestaurantName(menuRes.getRestaurant_name());
-
-			if (restuarantId == 0) {
+			
+			Long restuarantId = null;
+			try {
+				restuarantId = restaurantProfileRepo.getRestaurantIdByRestaurantName(menuRes.getRestaurant_name());
+			} catch (Exception e) {
 				return false;
 			}
+			
 			menu.setRestaurant_id(restuarantId);
 
 			menuService.addMenu(menu);
 		}
 
-		return true;
+		return false;
 	}
 }

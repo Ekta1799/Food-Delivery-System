@@ -62,7 +62,6 @@ INDEX VERSION 1.134+C:\Users\Ekta\Desktop\Food Delivery System\.metadata\.plugin
 2537662977.index
 3530608642.index
 1992967038.index
-3468501820.index
 3370220397.index
 4036460024.index
 4243920404.index

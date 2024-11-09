@@ -1,27 +1,31 @@
 package com.food.delivery.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.ResponseEntity.BodyBuilder;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.food.delivery.facade.RestaurantProfileFacade;
+import com.food.delivery.model.User;
 import com.food.delivery.pojo.MenuResource;
 import com.food.delivery.pojo.MessageResponse;
 import com.food.delivery.pojo.RestaurantProfileResource;
+import com.food.delivery.repository.UserRepository;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -32,6 +36,9 @@ public class RestaurantOwnerProfileController {
 
 	@Autowired
 	private RestaurantProfileFacade restaurantProfileFacade;
+
+	@Autowired
+	UserRepository userRepository;
 
 	// POST
 	@CrossOrigin(origins = "*", exposedHeaders = "**")
@@ -53,11 +60,11 @@ public class RestaurantOwnerProfileController {
 	// GET - User profile info based on firstname of user (filter - true)
 	@CrossOrigin(origins = "*", exposedHeaders = "**")
 	@PreAuthorize("hasAnyRole('ROLE_RESTAURANT_OWNER', 'ROLE_ADMIN')")
-	@GetMapping(value = "/restaurantProfile", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public ResponseEntity<?> getRestaurantProfiles(@RequestParam(value = "firstname", required = true) String firstname,
+	@GetMapping(value = "/restaurantOwnerProfile/{firstname}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<?> getRestaurantProfiles(@PathVariable(value = "firstname") String firstname,
 			HttpServletRequest request) {
 
-		if (firstname.isEmpty()) {
+		if (firstname == null) {
 			return ResponseEntity.badRequest()
 					.body(new MessageResponse("Please provide firstname of the resturant owner to view the profile."));
 		}
@@ -69,10 +76,10 @@ public class RestaurantOwnerProfileController {
 
 		} catch (Exception e) {
 			return ResponseEntity.badRequest()
-					.body(new MessageResponse("Error: Could not retrieve Restaurant owner profile for name " + firstname + "!"));
+					.body(new MessageResponse("Error: Restaurant owner profile not found for name " + firstname + "!"));
 		}
-		
-		if(restaurantResource == null) {
+
+		if (restaurantResource == null) {
 			return ResponseEntity.badRequest()
 					.body(new MessageResponse("Restaurant owner profile not found for name " + firstname + "!"));
 		}
@@ -80,7 +87,7 @@ public class RestaurantOwnerProfileController {
 		return ResponseEntity.ok(restaurantResource);
 	}
 
-	// PUT - Update user profile
+	// PUT - Update restaurant owner's profile
 	@CrossOrigin(origins = "*", exposedHeaders = "**")
 	@PreAuthorize("hasAnyRole('ROLE_RESTAURANT_OWNER', 'ROLE_ADMIN')")
 	@PutMapping("/restaurantProfile")
@@ -88,13 +95,25 @@ public class RestaurantOwnerProfileController {
 
 		logger.debug("Updating profile details for restuarant owner");
 
-		boolean response = restaurantProfileFacade.updateRestaurantProfile(restaurantResource);
-		if (!response) {
+		if (restaurantResource.getUsername() == null) {
 			return ResponseEntity.badRequest()
+					.body(new MessageResponse("Error: Provide username for updating a restaurant owner's profile"));
+		}
+
+		Optional<User> user = userRepository.findByUsername(restaurantResource.getUsername());
+
+		if (user.isEmpty()) {
+			return ResponseEntity.badRequest().body(new MessageResponse("Error: Username does not exist!"));
+		}
+
+		try {
+			restaurantProfileFacade.updateRestaurantProfile(restaurantResource);
+		} catch (Exception e) {
+			return ResponseEntity.internalServerError()
 					.body(new MessageResponse("Error: Restaurant owner profile could not be created!"));
 		}
 
-		return ResponseEntity.ok(new MessageResponse("User Profile Updated successfully!"));
+		return ResponseEntity.ok(new MessageResponse("Restaurant owner's profile updated successfully!"));
 	}
 
 	// POST
@@ -114,8 +133,8 @@ public class RestaurantOwnerProfileController {
 							+ "Fields required : food_item, price, cuisine, veg, restaurant_name;"));
 		}
 
-		if (error) {
-			return ResponseEntity.badRequest().body(
+		if (!error) {
+			return ((BodyBuilder) ResponseEntity.notFound()).body(
 					new MessageResponse("Error: The menu you are trying to add for the restaurant does not exist"));
 		}
 

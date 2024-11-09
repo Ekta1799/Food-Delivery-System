@@ -26,13 +26,13 @@ public class Orders {
 
 	private String status;
 
-	private int no_of_items;
+	private Integer no_of_items;
 
-	public int getNo_of_items() {
+	public Integer getNo_of_items() {
 		return no_of_items;
 	}
 
-	public void setNo_of_items(int no_of_items) {
+	public void setNo_of_items(Integer no_of_items) {
 		this.no_of_items = no_of_items;
 	}
 

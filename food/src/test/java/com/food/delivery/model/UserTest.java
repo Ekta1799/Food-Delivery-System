@@ -1,5 +1,12 @@
 package com.food.delivery.model;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.HashSet;
+import java.util.Set;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -7,15 +14,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.Query;
-
-import static org.mockito.Mockito.*;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.HashSet;
-import java.util.Set;
 
 class UserTest {
 
