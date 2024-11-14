@@ -33,10 +33,9 @@ class UserServiceImplTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        // Initializing a User object to be used in the tests
         user = new User();
-        user.setUsername("john_doe");
-        user.setPassword("password");
+        user.setUsername("ekta");
+        user.setPassword("ekta1");
     }
 
     @Test
@@ -47,20 +46,20 @@ class UserServiceImplTest {
         User savedUser = userService.saveUser(user);
 
         assertNotNull(savedUser);
-        assertEquals("john_doe", savedUser.getUsername());
+        assertEquals("ekta", savedUser.getUsername());
         verify(userRepository, times(1)).save(user);
     }
 
     @Test
     void testFindUserByUsername_UserFound() {
 
-        String username = "john_doe";
+        String username = "ekta";
         when(userRepository.findByUsername(username)).thenReturn(java.util.Optional.of(user));
 
         User foundUser = userService.findUserByUsername(username);
 
         assertNotNull(foundUser);
-        assertEquals("john_doe", foundUser.getUsername());
+        assertEquals("ekta", foundUser.getUsername());
         verify(userRepository, times(1)).findByUsername(username);
     }
 
@@ -82,7 +81,7 @@ class UserServiceImplTest {
     @Test
     void testExistsByUsername_UserExists() {
 
-        String username = "john_doe";
+        String username = "ekta";
         when(userRepository.findByUsername(username)).thenReturn(java.util.Optional.of(user));
 
         Boolean exists = userService.existsByUsername(username);
@@ -106,7 +105,7 @@ class UserServiceImplTest {
     @Test
     void testUpdatePassword() {
     	String newPassword = "new_password";
-        String username = "john_doe";
+        String username = "ekta";
         userService.updatePassword(newPassword, username);
 
         verify(userRepository, times(1)).updatePassword(newPassword, username);

@@ -29,9 +29,9 @@ class CustomerProfileServiceImplTest {
     void setUp() {
         MockitoAnnotations.openMocks(this);
         customerProfile = new CustomerProfile();
-        customerProfile.setFirstname("John");
-        customerProfile.setLastname("Doe");
-        customerProfile.setUsername("john_doe");
+        customerProfile.setFirstname("Sharon");
+        customerProfile.setLastname("Roy");
+        customerProfile.setUsername("Sroy");
         customerProfile.setPhone_no("1234567890");
         customerProfile.setAddress("123 Main St");
         customerProfile.setPayment_type("Credit");
@@ -41,23 +41,20 @@ class CustomerProfileServiceImplTest {
     void testAddCustomerProfile() {
         customerProfileService.addCustomerProfile(customerProfile);
 
-        // Assert
-        // Verify that the save method is called once with the correct argument
         verify(customerProfileRepo, times(1)).save(customerProfile);
     }
 
 
     @Test
     void testGetCustomerProfile() {
-        // Arrange
-        when(customerProfileRepo.getCustomerProfile("John")).thenReturn(customerProfile);
+        when(customerProfileRepo.getCustomerProfile("Sharon")).thenReturn(customerProfile);
 
         // Act
-        CustomerProfile result = customerProfileService.getCustomerProfile("John");
+        CustomerProfile result = customerProfileService.getCustomerProfile("Sharon");
 
         // Assert
         assertNotNull(result);
-        assertEquals("John", result.getFirstname());
-        assertEquals("Doe", result.getLastname());
+        assertEquals("Sharon", result.getFirstname());
+        assertEquals("Roy", result.getLastname());
     }
 }

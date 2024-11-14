@@ -58,7 +58,7 @@ public class CustomerProfileController {
 		// Call facade method to get books with optional search criteria
 		customerProfileFacade.addCustomerProfile(customerResource);
 
-		return ResponseEntity.ok(new MessageResponse("Book successfully added into the book store!"));
+		return ResponseEntity.ok(new MessageResponse("Customer profile added successfully!"));
 	}
 
 	// GET - User profile info based on firstname of user (filter - true)

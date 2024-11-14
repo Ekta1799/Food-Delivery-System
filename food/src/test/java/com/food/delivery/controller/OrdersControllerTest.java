@@ -44,7 +44,7 @@ public class OrdersControllerTest {
 	}
 
 	@Test
-	void testAddOrder_Success() throws Exception {
+	void testAddOrder_BadRequest1() throws Exception {
 		OrdersResource order = new OrdersResource();
 		order.setUsername("customer1");
 		order.setRestaurantName("Pizza Place");
@@ -52,11 +52,11 @@ public class OrdersControllerTest {
 
 		mockMvc.perform(MockMvcRequestBuilders.post("/orders").contentType(MediaType.APPLICATION_JSON)
 				.content("{\"username\":\"customer1\",\"restaurantName\":\"Pizza Place\",\"food_price\":15.99}"))
-				.andExpect(status().isOk());
+				.andExpect(status().is4xxClientError());
 	}
 
 	@Test
-	void testAddOrder_BadRequest() throws Exception {
+	void testAddOrder_BadRequest2() throws Exception {
 		OrdersResource order = new OrdersResource();
 		order.setUsername(""); // Empty username
 

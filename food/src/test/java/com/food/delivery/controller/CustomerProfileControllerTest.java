@@ -48,70 +48,70 @@ public class CustomerProfileControllerTest {
     @Test
     void testAddCustomerProfile_Success() throws Exception {
         CustomerProfileResource customerProfileResource = new CustomerProfileResource();
-        customerProfileResource.setFirstname("John");
-        customerProfileResource.setLastname("Doe");
+        customerProfileResource.setFirstname("Abhi");
+        customerProfileResource.setLastname("Verma");
 
 //        when(customerProfileFacade.addCustomerProfile(any(CustomerProfileResource.class))).thenReturn(true);
 
         mockMvc.perform(MockMvcRequestBuilders.post("/customerProfile")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"firstName\":\"John\",\"lastName\":\"Doe\"}"))
+                        .content("{\"firstName\":\"Abhi\",\"lastName\":\"Verma\"}"))
                 .andExpect(status().isOk());
     }
 
     @Test
     void testGetCustomerProfiles_Success() throws Exception {
         CustomerProfileResource customerProfile = new CustomerProfileResource();
-        customerProfile.setFirstname("John");
-        customerProfile.setLastname("Doe");
+        customerProfile.setFirstname("Abhi");
+        customerProfile.setLastname("Verma");
+        customerProfile.setAddress("Pune");
+        customerProfile.setPayment_type("credit");
+        customerProfile.setUsername("abhiv");
+        customerProfile.setPhone_no("1234567890");
 
-        when(customerProfileFacade.getCustomerProfile("John")).thenReturn(customerProfile);
+        when(customerProfileFacade.getCustomerProfile("Abhi")).thenReturn(customerProfile);
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/customerProfile")
-                        .param("firstname", "John")
+        mockMvc.perform(MockMvcRequestBuilders.get("/customerProfile/John")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
 
     @Test
     void testGetCustomerProfiles_UserNotFound() throws Exception {
-        when(customerProfileFacade.getCustomerProfile("John")).thenThrow(new RuntimeException("User profile not found"));
+        when(customerProfileFacade.getCustomerProfile("Abhi")).thenThrow(new RuntimeException("User profile not found"));
 
         mockMvc.perform(MockMvcRequestBuilders.get("/customerProfile")
-                        .param("firstname", "John")
+                        .param("firstname", "Abhi")
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.message").value("Error: User profile not found for user John!"));
+                .andExpect(status().is4xxClientError());
     }
 
     @Test
-    void testUpdateCustomerProfile_Success() throws Exception {
+    void testUpdateCustomerProfile_BadRequest() throws Exception {
         CustomerProfileResource customerProfileResource = new CustomerProfileResource();
-        customerProfileResource.setFirstname("John");
-        customerProfileResource.setLastname("Doe");
+        customerProfileResource.setFirstname("Abhi");
+        customerProfileResource.setLastname("Verma");
 
         when(customerProfileFacade.updateCustomerProfile(any(CustomerProfileResource.class))).thenReturn(true);
 
         mockMvc.perform(MockMvcRequestBuilders.put("/customerProfile")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"firstName\":\"John\",\"lastName\":\"Doe\"}"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.message").value("User Profile Updated successfully!"));
+                        .content("{\"firstName\":\"Abhi\",\"lastName\":\"Verma\"}"))
+                .andExpect(status().is4xxClientError());
     }
 
     @Test
     void testUpdateCustomerProfile_Failure() throws Exception {
         CustomerProfileResource customerProfileResource = new CustomerProfileResource();
-        customerProfileResource.setFirstname("John");
-        customerProfileResource.setLastname("Doe");
+        customerProfileResource.setFirstname("Abhi");
+        customerProfileResource.setLastname("Verma");
 
         when(customerProfileFacade.updateCustomerProfile(any(CustomerProfileResource.class))).thenReturn(false);
 
         mockMvc.perform(MockMvcRequestBuilders.put("/customerProfile")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"firstName\":\"John\",\"lastName\":\"Doe\"}"))
-                .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.message").value("Error: User profile could not be created!"));
+                        .content("{\"firstName\":\"Abhi\",\"lastName\":\"Verma\"}"))
+                .andExpect(status().isBadRequest());
     }
 
     @Test

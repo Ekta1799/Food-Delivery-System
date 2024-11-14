@@ -13,4 +13,6 @@ public interface OrdersService {
 	public List<Orders> getOrdersByRestaurantOwner(Long restaurant_id);
 	
 	public List<Orders> getOrderStatusByCustomer(Long customer_id, String status);
+	
+	public List<Orders> getDeliveryOrders();
 }

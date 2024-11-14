@@ -47,4 +47,11 @@ public class OrdersServiceImpl implements OrdersService {
 
 		return orders;
 	}
+	
+	public List<Orders> getDeliveryOrders() {
+		
+		List<Orders> orders = ordersRepo.getDeliveryOrder();
+
+		return orders;
+	}
 }

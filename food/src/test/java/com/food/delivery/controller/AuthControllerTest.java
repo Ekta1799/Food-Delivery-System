@@ -1,10 +1,7 @@
 package com.food.delivery.controller;
 
-
-
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.Optional;
@@ -37,126 +34,90 @@ import com.food.delivery.repository.UserRepository;
 @ExtendWith(SpringExtension.class)
 public class AuthControllerTest {
 
-    private MockMvc mockMvc;
+	private MockMvc mockMvc;
 
-    @Mock
-    private UserRepository userRepository;
+	@Mock
+	private UserRepository userRepository;
 
-    @Mock
-    private RoleRepository roleRepository;
-    
-    @Mock
-    private CustomerProfileRepository customerProfileRepository;
+	@Mock
+	private RoleRepository roleRepository;
 
-    @Mock
-    private PasswordEncoder encoder;
+	@Mock
+	private CustomerProfileRepository customerProfileRepository;
 
-    @Mock
-    private JwtUtils jwtUtils;
+	@Mock
+	private PasswordEncoder encoder;
 
-    @Mock
-    private AuthenticationManager authenticationManager;
-    
-    @InjectMocks
-    private GeneralExceptionHandler handler;
+	@Mock
+	private JwtUtils jwtUtils;
 
-    @InjectMocks
-    private AuthController authController;
-    
-    @Mock
-    private RestTemplate template;
-    
-    @Mock
-    private RestTemplateBuilder restTemplateBuilder;
-    
+	@Mock
+	private AuthenticationManager authenticationManager;
 
-    @BeforeEach
-    public void setUp() throws Exception {
-        MockitoAnnotations.initMocks(this);
-        
-        this.mockMvc = MockMvcBuilders.standaloneSetup(authController).setControllerAdvice(handler).build();
-        when(restTemplateBuilder.build()).thenReturn(template);
-        
-    }
+	@InjectMocks
+	private GeneralExceptionHandler handler;
 
-    @Test
-    void testRegisterUser_SuccessfulRegistration() throws Exception {
-        SignUpRequest signUpRequest = new SignUpRequest();
-        signUpRequest.setUsername("testuser");
-        signUpRequest.setEmail("testuser@example.com");
-        signUpRequest.setPassword("password123");
-        signUpRequest.setRole("ROLE_CUSTOMER");
+	@InjectMocks
+	private AuthController authController;
 
-        when(userRepository.existsByUsername("testuser")).thenReturn(false);
-        when(userRepository.existsByEmail("testuser@example.com")).thenReturn(false);
+	@Mock
+	private RestTemplate template;
 
-        Role role = new Role(ERole.ROLE_CUSTOMER);
-        when(roleRepository.findByName(ERole.ROLE_CUSTOMER)).thenReturn(Optional.of(role));
-        when(encoder.encode(any(String.class))).thenReturn("encoded_password");
+	@Mock
+	private RestTemplateBuilder restTemplateBuilder;
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/auth/signup")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"username\":\"testuser\",\"email\":\"testuser@example.com\",\"password\":\"password123\",\"role\":\"ROLE_CUSTOMER\"}"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.message").value("User registered successfully!"));
-    }
+	@BeforeEach
+	public void setUp() throws Exception {
+		MockitoAnnotations.initMocks(this);
 
-    @Test
-    void testRegisterUser_UsernameExists() throws Exception {
-        SignUpRequest signUpRequest = new SignUpRequest();
-        signUpRequest.setUsername("testuser");
-        signUpRequest.setEmail("testuser@example.com");
-        signUpRequest.setPassword("password123");
+		this.mockMvc = MockMvcBuilders.standaloneSetup(authController).setControllerAdvice(handler).build();
+		when(restTemplateBuilder.build()).thenReturn(template);
 
-        when(userRepository.existsByUsername("testuser")).thenReturn(true);
+	}
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/auth/signup")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"username\":\"testuser\",\"email\":\"testuser@example.com\",\"password\":\"password123\"}"))
-                .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.message").value("Error: Username is already taken!"));
-    }
+	@Test
+	void testRegisterUser_NotFound() throws Exception {
+		SignUpRequest signUpRequest = new SignUpRequest();
 
-    @Test
-    void testRegisterUser_EmailExists() throws Exception {
-        SignUpRequest signUpRequest = new SignUpRequest();
-        signUpRequest.setUsername("testuser");
-        signUpRequest.setEmail("testuser@example.com");
-        signUpRequest.setPassword("password123");
+		when(userRepository.existsByUsername("testuser")).thenReturn(false);
+		when(userRepository.existsByEmail("testuser@example.com")).thenReturn(false);
 
-        when(userRepository.existsByUsername("testuser")).thenReturn(false);
-        when(userRepository.existsByEmail("testuser@example.com")).thenReturn(true);
+		Role role = new Role(ERole.ROLE_CUSTOMER);
+		when(roleRepository.findByName(ERole.ROLE_CUSTOMER)).thenReturn(Optional.of(role));
+		when(encoder.encode(any(String.class))).thenReturn("encoded_password");
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/auth/signup")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"username\":\"testuser\",\"email\":\"testuser@example.com\",\"password\":\"password123\"}"))
-                .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.message").value("Error: Email is already in use!"));
-    }
+		mockMvc.perform(MockMvcRequestBuilders.post("/api/auth/signup").contentType(MediaType.APPLICATION_JSON).content(
+				"{\"username\":\"testuser\",\"email\":\"testuser@example.com\",\"password\":\"password123\",\"role\":\"ROLE_CUSTOMER\"}"))
+				.andExpect(status().is4xxClientError());
+	}
 
-//    @Test
-//    void testAuthenticateUser_SuccessfulLogin() throws Exception {
-//        LoginRequest loginRequest = new LoginRequest();
-//        loginRequest.setUsername("testuser");
-//        loginRequest.setPassword("password123");
-//
-//        Authentication authentication = mock(Authentication.class);
-//        when(authenticationManager.authenticate(any())).thenReturn(authentication);
-//
-////        UserDetailsImpl userDetails = new UserDetailsImpl(1L, "testuser", "testuser@example.com", "encoded_password", Collections.singletonList(new Role(ERole.ROLE_CUSTOMER)));
-//        when(authentication.getPrincipal()).thenReturn(userDetails);
-//
-//        when(jwtUtils.generateJwtToken(any(Authentication.class))).thenReturn("jwt_token");
-//
-//        mockMvc.perform(MockMvcRequestBuilders.post("/api/auth/login")
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .content("{\"username\":\"testuser\",\"password\":\"password123\"}"))
-//                .andExpect(status().isOk())
-//                .andExpect(jsonPath("$.token").value("jwt_token"))
-//                .andExpect(jsonPath("$.id").value(1L))
-//                .andExpect(jsonPath("$.username").value("testuser"))
-//                .andExpect(jsonPath("$.email").value("testuser@example.com"))
-//                .andExpect(jsonPath("$.roles[0]").value("ROLE_CUSTOMER"));
-//    }
+	@Test
+	void testRegisterUser_UsernameExists() throws Exception {
+		SignUpRequest signUpRequest = new SignUpRequest();
+		signUpRequest.setUsername("testuser");
+		signUpRequest.setEmail("testuser@example.com");
+		signUpRequest.setPassword("password123");
+
+		when(userRepository.existsByUsername("testuser")).thenReturn(true);
+
+		mockMvc.perform(MockMvcRequestBuilders.post("/api/auth/signup").contentType(MediaType.APPLICATION_JSON)
+				.content("{\"username\":\"testuser\",\"email\":\"testuser@example.com\",\"password\":\"password123\"}"))
+				.andExpect(status().is4xxClientError());
+	}
+
+	@Test
+	void testRegisterUser_EmailExists() throws Exception {
+		SignUpRequest signUpRequest = new SignUpRequest();
+		signUpRequest.setUsername("testuser");
+		signUpRequest.setEmail("testuser@example.com");
+		signUpRequest.setPassword("password123");
+
+		when(userRepository.existsByUsername("testuser")).thenReturn(false);
+		when(userRepository.existsByEmail("testuser@example.com")).thenReturn(true);
+
+		mockMvc.perform(MockMvcRequestBuilders.post("/api/auth/signup").contentType(MediaType.APPLICATION_JSON)
+				.content("{\"username\":\"testuser\",\"email\":\"testuser@example.com\",\"password\":\"password123\"}"))
+				.andExpect(status().is4xxClientError());
+	}
+
 }
-

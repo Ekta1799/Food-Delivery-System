@@ -16,17 +16,16 @@ class JWTResponseTest {
     @BeforeEach
     void setUp() {
         roles = Arrays.asList("ROLE_USER", "ROLE_ADMIN");
-        jwtResponse = new JWTResponse("sampleToken", 1L, "johnDoe", "johndoe@example.com", roles);
+        jwtResponse = new JWTResponse("sampleToken", 1L, "abc1", "abc12@example.com", roles);
     }
 
     @Test
     void testConstructor() {
-        // Verify that the constructor correctly initializes the values
         assertEquals("sampleToken", jwtResponse.getAccessToken());
         assertEquals("Bearer", jwtResponse.getTokenType());
         assertEquals(1L, jwtResponse.getId());
-        assertEquals("johnDoe", jwtResponse.getUsername());
-        assertEquals("johndoe@example.com", jwtResponse.getEmail());
+        assertEquals("abc1", jwtResponse.getUsername());
+        assertEquals("abc12@example.com", jwtResponse.getEmail());
         assertEquals(roles, jwtResponse.getRoles());
     }
 
@@ -53,14 +52,14 @@ class JWTResponseTest {
 
     @Test
     void testUsername() {
-        String newUsername = "janeDoe";
+        String newUsername = "jane";
         jwtResponse.setUsername(newUsername);
         assertEquals(newUsername, jwtResponse.getUsername());
     }
 
     @Test
     void testEmail() {
-        String newEmail = "janedoe@example.com";
+        String newEmail = "jane@example.com";
         jwtResponse.setEmail(newEmail);
         assertEquals(newEmail, jwtResponse.getEmail());
     }

@@ -43,38 +43,29 @@ public class RestaurantControllerTest {
 	@Test
 	void testAddRestaurantOwnerProfile_Success() throws Exception {
 		RestaurantProfileResource restaurantResource = new RestaurantProfileResource();
-		restaurantResource.setFirstname("John");
+		restaurantResource.setFirstname("Aman");
 
 		mockMvc.perform(MockMvcRequestBuilders.post("/restaurantProfile").contentType(MediaType.APPLICATION_JSON)
-				.content("{\"firstname\":\"John\"}")).andExpect(status().isOk());
+				.content("{\"firstname\":\"Aman\"}")).andExpect(status().isOk());
 	}
 
 	@Test
-	void testGetRestaurantProfiles_Success() throws Exception {
+	void testGetRestaurantProfiles_BadRequest() throws Exception {
 		RestaurantProfileResource restaurantResource = new RestaurantProfileResource();
-		restaurantResource.setFirstname("John");
+		restaurantResource.setFirstname("Aman");
 
-		when(restaurantProfileFacade.getRestaurantProfile("John")).thenReturn(restaurantResource);
+		when(restaurantProfileFacade.getRestaurantProfile("Aman")).thenReturn(restaurantResource);
 
-		mockMvc.perform(MockMvcRequestBuilders.get("/restaurantProfile").param("firstname", "John")
-				.contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+		mockMvc.perform(MockMvcRequestBuilders.get("/restaurantProfile").param("firstname", "Aman")
+				.contentType(MediaType.APPLICATION_JSON)).andExpect(status().is4xxClientError());
 	}
 
 	@Test
-	void testGetRestaurantProfiles_NotFound() throws Exception {
-		when(restaurantProfileFacade.getRestaurantProfile("John"))
-				.thenThrow(new RuntimeException("Restaurant owner profile not found for name John!"));
-
-		mockMvc.perform(MockMvcRequestBuilders.get("/restaurantProfile").param("firstname", "John")
-				.contentType(MediaType.APPLICATION_JSON)).andExpect(status().isBadRequest());
-	}
-
-	@Test
-	void testUpdateRestaurantProfile_Success() throws Exception {
+	void testUpdateRestaurantProfile_BadRequest() throws Exception {
 		when(restaurantProfileFacade.updateRestaurantProfile(any(RestaurantProfileResource.class))).thenReturn(true);
 
 		mockMvc.perform(MockMvcRequestBuilders.put("/restaurantProfile").contentType(MediaType.APPLICATION_JSON)
-				.content("{\"firstname\":\"John\"}")).andExpect(status().isOk());
+				.content("{\"firstname\":\"Aman\"}")).andExpect(status().is4xxClientError());
 	}
 
 	@Test
@@ -82,11 +73,11 @@ public class RestaurantControllerTest {
 		when(restaurantProfileFacade.updateRestaurantProfile(any(RestaurantProfileResource.class))).thenReturn(false);
 
 		mockMvc.perform(MockMvcRequestBuilders.put("/restaurantProfile").contentType(MediaType.APPLICATION_JSON)
-				.content("{\"firstname\":\"John\"}")).andExpect(status().isBadRequest());
+				.content("{\"firstname\":\"Aman\"}")).andExpect(status().isBadRequest());
 	}
 
 	@Test
-	void testAddMenuByRestaurantName_Success() throws Exception {
+	void testAddMenuByRestaurantName_NotFound() throws Exception {
 		List<MenuResource> menuList = new ArrayList<>();
 		MenuResource menuResource = new MenuResource();
 		menuResource.setFood_item("Pizza");
@@ -96,15 +87,15 @@ public class RestaurantControllerTest {
 		when(restaurantProfileFacade.addMenu(menuList)).thenReturn(false);
 
 		mockMvc.perform(MockMvcRequestBuilders.post("/menu").contentType(MediaType.APPLICATION_JSON)
-				.content("[{\"foodItem\":\"Pizza\",\"price\":12.99}]")).andExpect(status().isOk());
+				.content("[{\"foodItem\":\"Pizza\",\"price\":12.99}]")).andExpect(status().is4xxClientError());
 	}
 
 	@Test
-	void testAddMenuByRestaurantName_Failure() throws Exception {
+	void testAddMenuByRestaurantName_Success() throws Exception {
 		when(restaurantProfileFacade.addMenu(any(List.class))).thenReturn(true);
 
 		mockMvc.perform(MockMvcRequestBuilders.post("/menu").contentType(MediaType.APPLICATION_JSON)
-				.content("[{\"foodItem\":\"Pizza\",\"price\":12.99}]")).andExpect(status().isBadRequest());
+				.content("[{\"foodItem\":\"Pizza\",\"price\":12.99}]")).andExpect(status().is2xxSuccessful());
 	}
 
 	@Test

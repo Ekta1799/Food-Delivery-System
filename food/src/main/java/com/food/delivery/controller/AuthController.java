@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.food.delivery.jwt.JwtUtils;
 import com.food.delivery.model.CustomerProfile;
+import com.food.delivery.model.DeliveryPersonnelProfile;
 import com.food.delivery.model.ERole;
 import com.food.delivery.model.RestaurantOwnerProfile;
 import com.food.delivery.model.Role;
@@ -31,6 +32,7 @@ import com.food.delivery.pojo.LoginRequest;
 import com.food.delivery.pojo.MessageResponse;
 import com.food.delivery.pojo.SignUpRequest;
 import com.food.delivery.repository.CustomerProfileRepository;
+import com.food.delivery.repository.DeliveryPersonnelProfileRepository;
 import com.food.delivery.repository.RestaurantProfileRepository;
 import com.food.delivery.repository.RoleRepository;
 import com.food.delivery.repository.UserRepository;
@@ -63,6 +65,9 @@ public class AuthController {
 
 	@Autowired
 	RestaurantProfileRepository restaurantProfileRepo;
+
+	@Autowired
+	DeliveryPersonnelProfileRepository deliveryPersonnelProfileRepository;
 
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@RequestBody SignUpRequest signUpRequest) {
@@ -118,6 +123,11 @@ public class AuthController {
 
 				user.setRoles(roles);
 				userRepository.save(user);
+
+				DeliveryPersonnelProfile deliveryPersonnelProfile = new DeliveryPersonnelProfile();
+				deliveryPersonnelProfile.setUser_id(user.getId());
+				deliveryPersonnelProfile.setUsername(user.getUsername());
+				deliveryPersonnelProfileRepository.save(deliveryPersonnelProfile);
 
 				break;
 			case "ROLE_ADMIN":

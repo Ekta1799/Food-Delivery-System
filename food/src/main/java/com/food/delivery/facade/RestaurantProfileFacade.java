@@ -167,6 +167,6 @@ public class RestaurantProfileFacade {
 			menuService.addMenu(menu);
 		}
 
-		return false;
+		return true;
 	}
 }

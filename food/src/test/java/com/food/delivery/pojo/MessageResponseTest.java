@@ -16,14 +16,12 @@ class MessageResponseTest {
 
     @Test
     void testGetMessage() {
-        // Check if the getter returns the correct message
         String expectedMessage = "Success";
         assertEquals(expectedMessage, messageResponse.getMessage());
     }
 
     @Test
     void testSetMessage() {
-        // Test the setter method for message
         String newMessage = "Error";
         messageResponse.setMessage(newMessage);
         assertEquals(newMessage, messageResponse.getMessage());
@@ -31,7 +29,6 @@ class MessageResponseTest {
 
     @Test
     void testMessageResponseConstructor() {
-        // Verify the constructor initializes the message correctly
         MessageResponse newMessageResponse = new MessageResponse("Initialized");
         assertEquals("Initialized", newMessageResponse.getMessage());
     }

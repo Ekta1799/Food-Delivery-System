@@ -32,4 +32,11 @@ public interface OrdersRepository extends JpaRepository<Orders, Long> {
 	
 	@Query("SELECT o.restaurant_id FROM Orders o GROUP BY o.restaurant_id ORDER BY COUNT(o) DESC")
 	Long findMostPopularRestaurant();
+	
+	@Query(value = "SELECT * FROM orders WHERE status = 'OUT_FOR_DELIVERY'", nativeQuery = true)
+	List<Orders> getDeliveryOrder();
+	
+	@Query("SELECT CASE WHEN COUNT(r) > 0 THEN true ELSE false END FROM Orders r WHERE r.id = :id")
+	boolean existsById(@Param("id") Long id);
+
 }

@@ -33,7 +33,7 @@ class RestaurantProfileServiceImplTest {
     void setUp() {
         MockitoAnnotations.openMocks(this);
         restaurantProfile = new RestaurantOwnerProfile();
-        restaurantProfile.setFirstname("John");
+        restaurantProfile.setFirstname("Reyan");
         restaurantProfile.setId(1L);
         restaurantProfile.setRestaurant_name("Good Food");
     }
@@ -49,14 +49,14 @@ class RestaurantProfileServiceImplTest {
     @Test
     void testGetRestaurantProfile() {
 
-        String firstName = "John";
+        String firstName = "Reyan";
         when(restaurantProfileRepository.getRestaurantProfile(firstName)).thenReturn(restaurantProfile);
 
         RestaurantOwnerProfile result = restaurantProfileService.getRestaurantProfile(firstName);
 
         // Assert
         assertNotNull(result);
-        assertEquals("John", result.getFirstname());
+        assertEquals("Reyan", result.getFirstname());
         verify(restaurantProfileRepository, times(1)).getRestaurantProfile(firstName);
     }
 }

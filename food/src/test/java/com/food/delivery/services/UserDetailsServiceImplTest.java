@@ -32,14 +32,14 @@ class UserDetailsServiceImplTest {
         MockitoAnnotations.openMocks(this);
         // Initializing a User object to be used in the tests
         user = new User();
-        user.setUsername("john_doe");
-        user.setPassword("password");
+        user.setUsername("ekta");
+        user.setPassword("ekta1");
     }
 
     @Test
     void testLoadUserByUsername_UserExists() {
         // Arrange
-        String username = "john_doe";
+        String username = "ekta";
         when(userRepository.findByUsername(username)).thenReturn(java.util.Optional.of(user));
 
         // Act
@@ -47,7 +47,7 @@ class UserDetailsServiceImplTest {
 
         // Assert
         assertNotNull(userDetails);
-        assertEquals("john_doe", userDetails.getUsername());
+        assertEquals("ekta", userDetails.getUsername());
         verify(userRepository, times(1)).findByUsername(username);
     }
 

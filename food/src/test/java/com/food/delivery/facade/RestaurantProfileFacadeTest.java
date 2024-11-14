@@ -60,59 +60,49 @@ public class RestaurantProfileFacadeTest {
 
     @Test
     public void testAddRestaurantProfile() {
-        // Create test data
         RestaurantProfileResource restaurantResource = new RestaurantProfileResource();
-        restaurantResource.setFirstname("John");
-        restaurantResource.setLastname("Doe");
-        restaurantResource.setUsername("john_doe");
+        restaurantResource.setFirstname("Stalin");
+        restaurantResource.setLastname("Roy");
+        restaurantResource.setUsername("stroy");
         restaurantResource.setAddress("123 Main St");
         restaurantResource.setPhone_no("1234567890");
         restaurantResource.setRestaurant_name("Foodies");
         restaurantResource.setHours_of_operation(8);
 
-        // Mocking service call
         doNothing().when(service).addRestaurantProfile(any(RestaurantOwnerProfile.class));
 
-        // Call the method under test
         facade.addRestaurantProfile(restaurantResource);
-
-        // Verify that the service method was called
         verify(service, times(1)).addRestaurantProfile(any(RestaurantOwnerProfile.class));
     }
 
     @Test
     public void testGetRestaurantProfile() {
-        String firstName = "John";
+        String firstName = "Stalin";
 
-        // Create test data
         RestaurantOwnerProfile restaurantProfile = new RestaurantOwnerProfile();
         restaurantProfile.setFirstname(firstName);
-        restaurantProfile.setLastname("Doe");
-        restaurantProfile.setUsername("john_doe");
+        restaurantProfile.setLastname("Roy");
+        restaurantProfile.setUsername("stroy");
         restaurantProfile.setRestaurant_name("Foodies");
         restaurantProfile.setPhone_no("1234567890");
         restaurantProfile.setAddress("123 Main St");
         restaurantProfile.setHours_of_operation(8);
 
-        // Mocking service call
         when(service.getRestaurantProfile(firstName)).thenReturn(restaurantProfile);
 
-        // Call the method under test
         RestaurantProfileResource result = facade.getRestaurantProfile(firstName);
 
-        // Verify results
         assertNotNull(result);
-        assertEquals("John", result.getFirstname());
+        assertEquals("Stalin", result.getFirstname());
         verify(service, times(1)).getRestaurantProfile(firstName);
     }
 
     @Test
     public void testUpdateRestaurantProfile() {
-        // Create test data
         RestaurantProfileResource restaurantProfileResource = new RestaurantProfileResource();
-        restaurantProfileResource.setUsername("john_doe");
-        restaurantProfileResource.setFirstname("John");
-        restaurantProfileResource.setLastname("Doe");
+        restaurantProfileResource.setUsername("stroy");
+        restaurantProfileResource.setFirstname("Stalin");
+        restaurantProfileResource.setLastname("Roy");
         restaurantProfileResource.setPhone_no("1234567890");
         restaurantProfileResource.setAddress("123 Main St");
         restaurantProfileResource.setRestaurant_name("Foodies");
@@ -120,17 +110,15 @@ public class RestaurantProfileFacadeTest {
 
         User user = new User();
         user.setId(1L);
-        when(userRepository.findByUsername("john_doe")).thenReturn(Optional.of(user));
+        when(userRepository.findByUsername("stroy")).thenReturn(Optional.of(user));
         when(restaurantProfileRepo.existsByUserId(1L)).thenReturn(true);
 
         RestaurantOwnerProfile restaurantOwnerProfile = new RestaurantOwnerProfile();
         restaurantOwnerProfile.setUser_id(1L);
-        when(restaurantProfileRepo.findByUsername("john_doe")).thenReturn(Optional.of(restaurantOwnerProfile));
+        when(restaurantProfileRepo.findByUsername("stroy")).thenReturn(Optional.of(restaurantOwnerProfile));
 
-        // Call the method under test
         boolean result = facade.updateRestaurantProfile(restaurantProfileResource);
 
-        // Verify results
         assertTrue(result);
         verify(restaurantProfileRepo, times(1)).updateRestaurantProfile(anyLong(), anyString(), anyString(), anyString(), anyString(), anyString(), anyInt());
     }
@@ -141,12 +129,10 @@ public class RestaurantProfileFacadeTest {
         Boolean isVeg = true;
         String cuisine = "Italian";
 
-        // Mock restaurant names list
         List<String> restaurantNames = new ArrayList<>();
         restaurantNames.add("Foodies");
         when(restaurantProfileRepo.findAllRestaurants()).thenReturn(restaurantNames);
 
-        // Create test menu
         Menu menu = new Menu();
         menu.setFood_item("Pizza");
         menu.setPrice(200);
@@ -154,10 +140,8 @@ public class RestaurantProfileFacadeTest {
         menu.setVeg(true);
         when(menuService.getMenuByRestaurantId(anyLong(), eq(foodItem), eq(isVeg), eq(cuisine))).thenReturn(menu);
 
-        // Call the method under test
         List<MenuResource> result = facade.getRestaurantList(foodItem, isVeg, cuisine);
 
-        // Verify results
         assertNotNull(result);
         assertEquals(1, result.size());
         assertEquals("Foodies", result.get(0).getRestaurant_name());
@@ -166,24 +150,20 @@ public class RestaurantProfileFacadeTest {
 
     @Test
     public void testAddMenu() {
-        // Create test data
         List<MenuResource> menuResourceList = new ArrayList<>();
         MenuResource menuResource = new MenuResource();
         menuResource.setFood_item("Pizza");
         menuResource.setCuisine("Italian");
-        menuResource.setPrice(200);
+        menuResource.setPrice(200.23);
         menuResource.setVeg(true);
         menuResource.setRestaurant_name("Foodies");
 
         menuResourceList.add(menuResource);
 
-        // Mock restaurant ID lookup
         when(restaurantProfileRepo.getRestaurantIdByRestaurantName("Foodies")).thenReturn(1L);
 
-        // Call the method under test
         boolean result = facade.addMenu(menuResourceList);
 
-        // Verify results
         assertTrue(result);
         verify(menuService, times(1)).addMenu(any(Menu.class));
     }

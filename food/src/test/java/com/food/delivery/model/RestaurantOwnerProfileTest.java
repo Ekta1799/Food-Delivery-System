@@ -22,20 +22,20 @@ class RestaurantOwnerProfileTest {
 
     @Test
     void testSetAndGetFirstname() {
-        restaurantOwnerProfile.setFirstname("John");
-        assertEquals("John", restaurantOwnerProfile.getFirstname());
+        restaurantOwnerProfile.setFirstname("Vivek");
+        assertEquals("Vivek", restaurantOwnerProfile.getFirstname());
     }
 
     @Test
     void testSetAndGetLastname() {
-        restaurantOwnerProfile.setLastname("Doe");
-        assertEquals("Doe", restaurantOwnerProfile.getLastname());
+        restaurantOwnerProfile.setLastname("Hadole");
+        assertEquals("Hadole", restaurantOwnerProfile.getLastname());
     }
 
     @Test
     void testSetAndGetUsername() {
-        restaurantOwnerProfile.setUsername("john_doe");
-        assertEquals("john_doe", restaurantOwnerProfile.getUsername());
+        restaurantOwnerProfile.setUsername("Vhadole");
+        assertEquals("Vhadole", restaurantOwnerProfile.getUsername());
     }
 
     @Test

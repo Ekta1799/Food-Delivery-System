@@ -68,6 +68,10 @@ public class WebSecurityConfig {
 						.requestMatchers("/menu").permitAll()
 						.requestMatchers("/restaurants").permitAll()
 						.requestMatchers("/orders").permitAll()
+						.requestMatchers("/deliveryPersonnelProfile/**").permitAll()
+						.requestMatchers("/deliveryOrders").permitAll()
+						.requestMatchers("/deliveryStatus/**").permitAll()
+						.requestMatchers("/deliveryDetails").permitAll()
 						.requestMatchers("/popularRestaurant").permitAll().anyRequest().authenticated());
 
 		http.authenticationProvider(authenticationProvider());

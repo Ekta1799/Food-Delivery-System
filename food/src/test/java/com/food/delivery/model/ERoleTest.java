@@ -9,7 +9,6 @@ class ERoleTest {
 
     @Test
     void testEnumValues() {
-        // Verify that the enum contains all expected roles
         ERole[] expectedRoles = ERole.values();
         assertEquals(4, expectedRoles.length);
         assertTrue(contains(expectedRoles, ERole.ROLE_CUSTOMER));
@@ -20,7 +19,6 @@ class ERoleTest {
 
     @Test
     void testEnumName() {
-        // Verify that each role has the correct name
         assertEquals("ROLE_CUSTOMER", ERole.ROLE_CUSTOMER.name());
         assertEquals("ROLE_RESTAURANT_OWNER", ERole.ROLE_RESTAURANT_OWNER.name());
         assertEquals("ROLE_DELIVERY_PERSONNEL", ERole.ROLE_DELIVERY_PERSONNEL.name());
@@ -29,7 +27,6 @@ class ERoleTest {
 
     @Test
     void testEnumOrdinal() {
-        // Verify the ordinal values of the enum constants
         assertEquals(0, ERole.ROLE_CUSTOMER.ordinal());
         assertEquals(1, ERole.ROLE_RESTAURANT_OWNER.ordinal());
         assertEquals(2, ERole.ROLE_DELIVERY_PERSONNEL.ordinal());

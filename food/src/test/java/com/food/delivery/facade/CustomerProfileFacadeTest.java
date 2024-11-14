@@ -57,118 +57,106 @@ class CustomerProfileFacadeTest {
 
     @Test
     void testAddCustomerProfile() {
-        // Arrange
         CustomerProfileResource customerResource = new CustomerProfileResource();
-        customerResource.setFirstname("John");
-        customerResource.setLastname("Doe");
-        customerResource.setUsername("johndoe");
+        customerResource.setFirstname("Vicky");
+        customerResource.setLastname("Verma");
+        customerResource.setUsername("user");
         customerResource.setAddress("123 Street");
         customerResource.setPhone_no("1234567890");
 
-        // Act
         customerProfileFacade.addCustomerProfile(customerResource);
 
-        // Assert
         verify(service, times(1)).addCustomerProfile(any(CustomerProfile.class));
     }
 
     @Test
     void testGetCustomerProfile() {
-        // Arrange
-        String firstName = "John";
+        String firstName = "Vicky";
         when(service.getCustomerProfile(firstName)).thenReturn(customerProfile);
-        when(customerProfile.getFirstname()).thenReturn("John");
-        when(customerProfile.getLastname()).thenReturn("Doe");
-        when(customerProfile.getUsername()).thenReturn("johndoe");
+        when(customerProfile.getFirstname()).thenReturn("Vicky");
+        when(customerProfile.getLastname()).thenReturn("Verma");
+        when(customerProfile.getUsername()).thenReturn("user");
         when(customerProfile.getAddress()).thenReturn("123 Street");
         when(customerProfile.getPhone_no()).thenReturn("1234567890");
         when(customerProfile.getPayment_type()).thenReturn("Credit");
 
-        // Act
         CustomerProfileResource result = customerProfileFacade.getCustomerProfile(firstName);
 
-        // Assert
         assertNotNull(result);
-        assertEquals("John", result.getFirstname());
-        assertEquals("Doe", result.getLastname());
+        assertEquals("Vicky", result.getFirstname());
+        assertEquals("Verma", result.getLastname());
     }
 
     @Test
     void testUpdateCustomerProfileWhenUserExists() {
-        // Arrange
+
         CustomerProfileResource resource = new CustomerProfileResource();
-        resource.setUsername("johndoe");
-        resource.setFirstname("John");
-        resource.setLastname("Doe");
+        resource.setUsername("user");
+        resource.setFirstname("Vicky");
+        resource.setLastname("Verma");
         resource.setPhone_no("9876543210");
         resource.setAddress("456 Avenue");
         resource.setPayment_type("Debit");
 
         User user = new User();
         user.setId(1L);
-        user.setUsername("johndoe");
+        user.setUsername("user");
 
-        when(userRepository.findByUsername("johndoe")).thenReturn(Optional.of(user));
+        when(userRepository.findByUsername("user")).thenReturn(Optional.of(user));
         when(customerProfileRepo.existsByUserId(1L)).thenReturn(true);
-        when(customerProfileRepo.findByUsername("johndoe")).thenReturn(Optional.of(customerProfile));
+        when(customerProfileRepo.findByUsername("user")).thenReturn(Optional.of(customerProfile));
 
-        // Act
         boolean result = customerProfileFacade.updateCustomerProfile(resource);
 
-        // Assert
         assertTrue(result);
         verify(customerProfileRepo, times(1)).updateUserProfile(anyLong(), anyString(), anyString(), anyString(), anyString(), anyString());
     }
 
     @Test
     void testUpdateCustomerProfileWhenProfileDoesNotExist() {
-        // Arrange
+
         CustomerProfileResource resource = new CustomerProfileResource();
-        resource.setUsername("johndoe");
-        resource.setFirstname("John");
-        resource.setLastname("Doe");
+        resource.setUsername("user");
+        resource.setFirstname("Vicky");
+        resource.setLastname("Verma");
         resource.setPhone_no("9876543210");
         resource.setAddress("456 Avenue");
         resource.setPayment_type("Debit");
 
         User user = new User();
         user.setId(1L);
-        user.setUsername("johndoe");
+        user.setUsername("user");
 
-        when(userRepository.findByUsername("johndoe")).thenReturn(Optional.of(user));
+        when(userRepository.findByUsername("user")).thenReturn(Optional.of(user));
         when(customerProfileRepo.existsByUserId(1L)).thenReturn(false);
 
-        // Act
         boolean result = customerProfileFacade.updateCustomerProfile(resource);
 
-        // Assert
         assertFalse(result);
     }
 
     @Test
     void testUpdateCustomerProfileWhenExceptionOccurs() {
-        // Arrange
+
         CustomerProfileResource resource = new CustomerProfileResource();
-        resource.setUsername("johndoe");
-        resource.setFirstname("John");
-        resource.setLastname("Doe");
+        resource.setUsername("user");
+        resource.setFirstname("Vicky");
+        resource.setLastname("Verma");
         resource.setPhone_no("9876543210");
         resource.setAddress("456 Avenue");
         resource.setPayment_type("Debit");
 
         User user = new User();
         user.setId(1L);
-        user.setUsername("johndoe");
+        user.setUsername("user");
 
-        when(userRepository.findByUsername("johndoe")).thenReturn(Optional.of(user));
+        when(userRepository.findByUsername("user")).thenReturn(Optional.of(user));
         when(customerProfileRepo.existsByUserId(1L)).thenReturn(true);
-        when(customerProfileRepo.findByUsername("johndoe")).thenReturn(Optional.of(customerProfile));
+        when(customerProfileRepo.findByUsername("user")).thenReturn(Optional.of(customerProfile));
         doThrow(new RuntimeException("Database error")).when(customerProfileRepo).updateUserProfile(anyLong(), anyString(), anyString(), anyString(), anyString(), anyString());
 
-        // Act
         boolean result = customerProfileFacade.updateCustomerProfile(resource);
 
-        // Assert
         assertFalse(result);
     }
 }

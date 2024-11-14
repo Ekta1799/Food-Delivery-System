@@ -17,21 +17,21 @@ class CustomerProfileResourceTest {
 
     @Test
     void testFirstname() {
-        String firstname = "John";
+        String firstname = "vicky";
         customerProfile.setFirstname(firstname);
         assertEquals(firstname, customerProfile.getFirstname());
     }
 
     @Test
     void testLastname() {
-        String lastname = "Doe";
+        String lastname = "naik";
         customerProfile.setLastname(lastname);
         assertEquals(lastname, customerProfile.getLastname());
     }
 
     @Test
     void testUsername() {
-        String username = "johndoe123";
+        String username = "vnaik12";
         customerProfile.setUsername(username);
         assertEquals(username, customerProfile.getUsername());
     }

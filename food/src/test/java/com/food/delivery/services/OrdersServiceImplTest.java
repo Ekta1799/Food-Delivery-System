@@ -43,38 +43,32 @@ class OrdersServiceImplTest {
 
         ordersService.addOrders(order);
 
-        // Assert
         verify(ordersRepo, times(1)).save(order);
     }
 
     @Test
     void testUpdateStatus() {
-        // Arrange
+
         Long customerId = 1L;
         Long restaurantId = 1L;
         Long foodId = 1L;
         String status = "Completed";
 
-        // Act
         ordersService.updateStatus(customerId, restaurantId, foodId, status);
 
-        // Assert
         verify(ordersRepo, times(1)).updateStatus(customerId, restaurantId, foodId, status);
     }
 
     @Test
     void testGetOrdersByRestaurantOwner() {
-        // Arrange
+
         Long restaurantId = 1L;
         List<Orders> ordersList = Arrays.asList(order);
 
-        // Mock the repository method
         when(ordersRepo.getOrdersByRestaurantId(restaurantId)).thenReturn(ordersList);
 
-        // Act
         List<Orders> result = ordersService.getOrdersByRestaurantOwner(restaurantId);
 
-        // Assert
         assertNotNull(result);
         assertEquals(1, result.size());
         verify(ordersRepo, times(1)).getOrdersByRestaurantId(restaurantId);
@@ -82,18 +76,14 @@ class OrdersServiceImplTest {
 
     @Test
     void testGetOrderStatusByCustomer_withStatus() {
-        // Arrange
         Long customerId = 1L;
         String status = "Pending";
         List<Orders> ordersList = Arrays.asList(order);
 
-        // Mock the repository method
         when(ordersRepo.getOrderByCustomerBasedOnStatus(customerId, status)).thenReturn(ordersList);
 
-        // Act
         List<Orders> result = ordersService.getOrderStatusByCustomer(customerId, status);
 
-        // Assert
         assertNotNull(result);
         assertEquals(1, result.size());
         verify(ordersRepo, times(1)).getOrderByCustomerBasedOnStatus(customerId, status);
@@ -101,17 +91,13 @@ class OrdersServiceImplTest {
 
     @Test
     void testGetOrderStatusByCustomer_withoutStatus() {
-        // Arrange
         Long customerId = 1L;
         List<Orders> ordersList = Arrays.asList(order);
 
-        // Mock the repository method
         when(ordersRepo.getOrderByCustomer(customerId)).thenReturn(ordersList);
 
-        // Act
         List<Orders> result = ordersService.getOrderStatusByCustomer(customerId, null);
 
-        // Assert
         assertNotNull(result);
         assertEquals(1, result.size());
         verify(ordersRepo, times(1)).getOrderByCustomer(customerId);
