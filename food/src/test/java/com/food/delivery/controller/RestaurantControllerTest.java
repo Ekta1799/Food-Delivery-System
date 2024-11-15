@@ -92,7 +92,7 @@ public class RestaurantControllerTest {
 
 	@Test
 	void testAddMenuByRestaurantName_Success() throws Exception {
-		when(restaurantProfileFacade.addMenu(any(List.class))).thenReturn(true);
+		when(restaurantProfileFacade.addMenu(any())).thenReturn(true);
 
 		mockMvc.perform(MockMvcRequestBuilders.post("/menu").contentType(MediaType.APPLICATION_JSON)
 				.content("[{\"foodItem\":\"Pizza\",\"price\":12.99}]")).andExpect(status().is2xxSuccessful());
@@ -100,7 +100,7 @@ public class RestaurantControllerTest {
 
 	@Test
 	void testAddMenuByRestaurantName_EmptyFields() throws Exception {
-		when(restaurantProfileFacade.addMenu(any(List.class))).thenThrow(new NullPointerException());
+		when(restaurantProfileFacade.addMenu(any())).thenThrow(new NullPointerException());
 
 		mockMvc.perform(MockMvcRequestBuilders.post("/menu").contentType(MediaType.APPLICATION_JSON)
 				.content("[{\"foodItem\":\"\"}]")).andExpect(status().isBadRequest());
