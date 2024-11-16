@@ -80,6 +80,7 @@ public class RestaurantProfileFacade {
 		restaurantProfileResource.setUsername(restaurant.getUsername());
 		restaurantProfileResource.setRestaurant_name(restaurant.getRestaurant_name());
 		restaurantProfileResource.setHours_of_operation(restaurant.getHours_of_operation());
+		restaurantProfileResource.setPhone_no(restaurant.getPhone_no());
 
 		return restaurantProfileResource;
 	}
