@@ -93,7 +93,7 @@ public class OrdersFacade {
 
 			OrdersResource orders = new OrdersResource();
 
-			String username = userRepository.userByUserId(order.getId());
+			String username = userRepository.userByUserId(order.getCustomer_id);
 
 			String foodName = menuRepo.getFoodNameFromFoodId(order.getFood_id());
 
@@ -127,7 +127,7 @@ public class OrdersFacade {
 
 			OrdersResource orders = new OrdersResource();
 
-			String user = userRepository.userByUserId(order.getId());
+			String user = userRepository.userByUserId(order.getCustomer_id);
 
 			String foodName = menuRepo.getFoodNameFromFoodId(order.getFood_id());
 
